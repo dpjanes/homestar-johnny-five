@@ -3,7 +3,7 @@
  *
  *  David Janes
  *  IOTDB.org
- *  2015-02-01
+ *  2015-02-28
  *
  *  Copyright [2013-2015] [David P. Janes]
  *
@@ -22,12 +22,26 @@
 
 "use strict";
 
-exports.Bridge = require('./THEBRIDGE');
+exports.Bridge = require('./FirmataBridge');
 exports.bindings = [
-    require('./THEMODEL').binding,
+    require('models/FirmataChainableLED'),
+    require('models/FirmataDHT11'),
+    require('models/FirmataGroveThermistor'),
+    require('models/FirmataInputBoolean'),
+    require('models/FirmataInputUnit'),
+    require('models/FirmataLightDimmer'),
+    require('models/FirmataLightSensor'),
+    require('models/FirmataLightSimple'),
+    require('models/FirmataMotionSensor'),
+    require('models/FirmataNeoPixel'),
+    require('models/FirmataOn'),
+    require('models/FirmataOutput'),
+    require('models/FirmataSoundSensor'),
+    require('models/FirmataSwitch'),
+    require('models/FirmataThreeAxisCompass'),
 ];
 
 exports.iotdb = require("iotdb");
 exports.wrap = function(name, initd) {
-    return exports.iotdb.make_wrap(name, exports.bindings, initd)
+    return exports.iotdb.make_wrap(name, exports.bindings, initd);
 };
