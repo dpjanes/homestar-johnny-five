@@ -7,7 +7,7 @@ IOTDB / HomeStar Controller for Arduino / Firmata devices
 XXX
 
 	$ npm install -g homestar ## with 'sudo' if error
-	$ npm install iotdb
+	$ homestar setup
 	$ homestar install homestar-firmata
 	$ node
 	>>> iotdb = require('iotdb')
