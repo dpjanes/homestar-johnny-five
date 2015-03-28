@@ -1,10 +1,10 @@
 {
     "author": "David P. Janes <davidjanes@iotdb.org> (https://iotdb.org)", 
     "bugs": {
-        "url": "https://github.com/dpjanes/homestar-firmata/issues"
+        "url": "https://github.com/dpjanes/iotdb-firmata/issues"
     }, 
     "dependencies": {
-        "serialport": "~1.5.0"
+        "serialport": "~1.6.3"
     }, 
     "description": "HomeStar / IOTDB Bridge for Arduino / Firmata", 
     "devDependencies": {
@@ -22,17 +22,17 @@
     "homestar": {}, 
     "license": "Apache-2.0", 
     "main": "index.js", 
-    "name": "homestar-firmata", 
+    "name": "iotdb-firmata", 
     "peerDependencies": {
-        "iotdb": ">=0.5.3"
+        "iotdb": ">=0.5.5"
     }, 
     "private": false, 
     "repository": {
         "type": "git", 
-        "url": "https://github.com/dpjanes/homestar-firmata"
+        "url": "https://github.com/dpjanes/iotdb-firmata"
     }, 
     "scripts": {
         "test": "grunt"
     }, 
-    "version": "0.0.0"
+    "version": "0.0.1"
 }
