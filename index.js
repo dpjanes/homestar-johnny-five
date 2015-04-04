@@ -22,7 +22,7 @@
 
 "use strict";
 
-exports.Bridge = require('./FirmataBridge');
+exports.Bridge = require('./FirmataBridge').Bridge;
 exports.bindings = [
     require('models/FirmataChainableLED'),
     require('models/FirmataDHT11'),
