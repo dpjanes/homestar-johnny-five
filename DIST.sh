@@ -6,6 +6,7 @@
 #   2015-02-10
 #
 
+exit 0
 PACKAGE=iotdb-firmata
 DIST_ROOT=/var/tmp/.dist.$$
 
