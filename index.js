@@ -24,6 +24,8 @@
 
 exports.Bridge = require('./FirmataBridge').Bridge;
 exports.bindings = [
+    require('./models/FirmataOn'),
+    /*
     require('models/FirmataChainableLED'),
     require('models/FirmataDHT11'),
     require('models/FirmataGroveThermistor'),
@@ -34,11 +36,11 @@ exports.bindings = [
     require('models/FirmataLightSimple'),
     require('models/FirmataMotionSensor'),
     require('models/FirmataNeoPixel'),
-    require('models/FirmataOn'),
     require('models/FirmataOutput'),
     require('models/FirmataSoundSensor'),
     require('models/FirmataSwitch'),
     require('models/FirmataThreeAxisCompass'),
+    */
 ];
 
 exports.iotdb = require("iotdb");

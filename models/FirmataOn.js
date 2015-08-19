@@ -19,10 +19,7 @@ exports.Model = iotdb.make_model('FirmataOn')
     .product("http://www.seeedstudio.com/depot/Grove-Buzzer-p-768.html")
     .description("turn something on")
     .help("make sure to set initd.pin")
-    .attribute(
-        iotdb.make_boolean(":on")
-            .control()
-    )
+    .io(iotdb.boolean.on)
     .make();
 
 /*
@@ -33,3 +30,37 @@ exports.Model = iotdb.make_model('FirmataOn')
     .make()
     ;
  */
+exports.binding = {
+    model: exports.Model,
+    bridge: require('../FirmataBridge').Bridge,
+    discover: false,
+    connectd: {
+        initialize: function(paramd) {
+            paramd.device = new paramd.five.Led({
+                pin: 13,
+                board: paramd.board,
+            });
+        },
+
+        data_out: function (paramd) {
+            if (paramd.cookd.on !== undefined) {
+                if (paramd.cookd.on) {
+                    paramd.rawd.Led = [ "on" ];
+                } else {
+                    paramd.rawd.Led = [ "off" ];
+                }
+            }
+        },
+    },
+};
+
+/*
+board.on("ready", function() {
+  var led = new five.Led(13);
+  led.blink(500);
+});
+*/
+
+iotdb.connect("FirmataOn", {
+    pin: 13,
+});
