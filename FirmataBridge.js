@@ -51,6 +51,10 @@ var FirmataBridge = function (initd, native) {
 
     if (self.native) {
         self.queue = _.queue("FirmataBridge");
+        self.native.__number = 1;
+        self.connectd = {};
+        self.fived = {};
+        self.scratchd = {};
     }
 };
 
@@ -78,9 +82,8 @@ FirmataBridge.prototype.discover = function () {
      *  The first argument should be self.initd, the second
      *  the thing that you do work with
      */
-    var s = self._firmata();
-    s.on('something', function (native) {
-        self.discovered(new FirmataBridge(self.initd, native));
+    self._firmata(function(error, board) {
+        self.discovered(new FirmataBridge(self.initd, board));
     });
 };
 
@@ -95,8 +98,77 @@ FirmataBridge.prototype.connect = function (connectd) {
 
     self._validate_connect(connectd);
 
+    self.connectd = _.defaults(connectd, {
+        connect: null,
+        data_in: function() {},
+        data_out: function() {},
+    }, self.connectd);
+
+    self._setup_connections();
     self._setup_polling();
     self.pull();
+};
+
+FirmataBridge.prototype._setup_connections = function () {
+    var self = this;
+
+    if (!self.connectd.connect) {
+        logger.error({
+            method: "connect",
+            cause: "programmer error - this needs to be set up at connection time",
+        }, "the 'connectd.connect' parameter must be present");
+    }
+
+    var connect_names = self.connectd.connect;
+    if (!_.is.Array(connect_names)) {
+        connect_names = [ connect_names ];
+    }
+
+    connect_names.map(function(connect_name) {
+        var connect_constructor = five[connect_name];
+        if (!connect_constructor) {
+            logger.error({
+                method: "connect",
+                connect_constructor: connect_constructor,
+                cause: "programmer error",
+            }, "the connect_constructor is not in 'five'");
+            return;
+        }
+        var connect_paramd = _.defaults(self.initd, {
+            board: self.native,
+        });
+        var connect_object = new connect_constructor(connect_paramd);
+        self.fived[connect_name] = connect_object;
+
+        connect_object.on("change", function() {
+            var event = this;
+
+            var rawd = {
+                "event": "change",
+            };
+
+            // scrub to get the Shape, a bit of a hack
+            var keys = Object.getOwnPropertyNames(event);
+            keys.map(function(key) {
+                var value = event[key];
+                if (_.is.Number(value)) {
+                    rawd[key] = value;
+                } else if (_.is.String(value)) {
+                    rawd[key] = value;
+                } else if (_.is.Array(value)) {
+                    rawd[key] = value;
+                } else {
+                }
+            });
+
+            var paramd = {
+                rawd: rawd,
+                cookd: {},
+                scratchd: self.scratchd,
+            };
+            self.connectd.data_in(paramd);
+        });
+    });
 };
 
 FirmataBridge.prototype._setup_polling = function () {
@@ -160,27 +232,45 @@ FirmataBridge.prototype.push = function (pushd, done) {
         pushd: pushd
     }, "push");
 
-    var qitem = {
-        // if you set "id", new pushes will unqueue old pushes with the same id
-        // id: self.number, 
-        run: function () {
-            self._pushd(pushd);
-            self.queue.finished(qitem);
-        },
-        code: function() {
-            done();
-        },
+    var paramd = {
+        rawd: {},
+        cookd: pushd,
+        scratchd: self.scratchd,
     };
-    self.queue.add(qitem);
-};
+    self.connectd.data_out(paramd);
 
-/**
- *  Do the work of pushing. If you don't need queueing
- *  consider just moving this up into push
- */
-FirmataBridge.prototype._push = function (pushd) {
-    if (pushd.on !== undefined) {
-    }
+    _.mapObject(paramd.rawd, function(params, key_object_name) {
+        var key_object = self.fived[key_object_name];
+        if (!key_object) {
+            logger.error({
+                method: "push",
+                key_object_name: key_object_name,
+                cause: "programmer error - this needs to be set up at connection time",
+            }, "key_object_name not found or initialized");
+            return;
+        }
+
+        if (!_.is.Array(params)) {
+            params = [ params ];
+        }
+
+        var key_function_name = _.first(params);
+        params.splice(0, 1);
+        var key_function = key_object[key_function_name];
+
+        var qitem = {
+            id: key_object_name,
+            run: function () {
+                key_function.apply(key_object, params);
+
+                self.queue.finished(qitem);
+            },
+            coda: function() {
+                done();
+            },
+        };
+        self.queue.add(qitem);
+    });
 };
 
 /**
@@ -191,6 +281,7 @@ FirmataBridge.prototype.pull = function () {
     if (!self.native) {
         return;
     }
+
 };
 
 /* --- state --- */
@@ -205,10 +296,10 @@ FirmataBridge.prototype.meta = function () {
     }
 
     return {
-        "iot:thing-id": _.id.thing_urn.unique("Firmata", self.native.uuid, self.initd.number),
+        "iot:thing-id": _.id.thing_urn.unique("Firmata", self.native.id, self.native.__number),
         "schema:name": self.native.name || "Firmata",
 
-        // "iot:number": self.initd.number,
+        // "iot:thing-number": self.initd.number,
         // "iot:device-id": _.id.thing_urn.unique("Firmata", self.native.uuid),
         // "schema:manufacturer": "",
         // "schema:model": "",
@@ -233,14 +324,18 @@ var __singleton;
 /**
  *  If you need a singleton to access the library
  */
-FirmataBridge.prototype._firmata = function () {
+FirmataBridge.prototype._firmata = function (done) {
     var self = this;
 
-    if (!__singleton) {
-        __singleton = firmata.init();
+    if (__singleton) {
+        done(null, __singleton);
+    } else {
+        var board = new five.Board();
+        board.on("ready", function() {
+            __singleton = board;
+            done(null, __singleton);
+        });
     }
-
-    return __singleton;
 };
 
 /*
