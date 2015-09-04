@@ -22,45 +22,21 @@ exports.Model = iotdb.make_model('FirmataOn')
     .io(iotdb.boolean.on)
     .make();
 
-/*
-    .driver_identity(":firmata")
-    .driver_setup(function(paramd) {
-        paramd.initd.pins = "on:mode=digital-output"
-    })
-    .make()
-    ;
- */
 exports.binding = {
     model: exports.Model,
     bridge: require('../FirmataBridge').Bridge,
     discover: false,
     connectd: {
-        initialize: function(paramd) {
-            paramd.device = new paramd.five.Led({
-                pin: 13,
-                board: paramd.board,
-            });
-        },
+        connect: "Led",
 
         data_out: function (paramd) {
             if (paramd.cookd.on !== undefined) {
                 if (paramd.cookd.on) {
-                    paramd.rawd.Led = [ "on" ];
+                    paramd.rawd.Led = "on";
                 } else {
-                    paramd.rawd.Led = [ "off" ];
+                    paramd.rawd.Led = "off";
                 }
             }
         },
     },
 };
-
-/*
-board.on("ready", function() {
-  var led = new five.Led(13);
-  led.blink(500);
-});
-*/
-
-iotdb.connect("FirmataOn", {
-    pin: 13,
-});

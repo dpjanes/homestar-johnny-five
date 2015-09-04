@@ -24,7 +24,7 @@
 
 exports.Bridge = require('./FirmataBridge').Bridge;
 exports.bindings = [
-    require('./models/FirmataOn'),
+    require('./models/FirmataOn').binding,
     /*
     require('models/FirmataChainableLED'),
     require('models/FirmataDHT11'),
