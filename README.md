@@ -42,13 +42,12 @@ We'll use this as a reference
         bridge: require('../JohnnyFiveBridge').Bridge,
         discover: false,
         initd: {
+            component: "Pin",
             pin: 13,
             type: "digital",
             model: 1,   // output
         },
         connectd: {
-            component: "Pin",
-
             data_out: function (paramd) {
                 if (paramd.cookd.on !== undefined) {
                     if (paramd.cookd.on) {
@@ -71,9 +70,26 @@ If you're on an Edison, it will create an Edison parameter.
 * We may change / enhance this, but it won't break stuff
 already written
 
-### Component Connection
+### Component Creation
 
-The 
+"binding.initd.component" determines which Johnny-Five
+component is being created. For example, if you want to 
+use the Johnny-Five [Pin](http://johnny-five.io/api/pin/)
+component, this would be "Pin". All the other items
+in "initd" are passed to the constructor. So for example,
+this definition
 
+    initd: {
+        component: "Pin",
+        pin: 13,
+        type: "digital",
+        model: 1,   // output
+    }
 
+ends up doing something like this
 
+    component = new five.Pin({
+        pin: 13,
+        type: "digital",
+        model: 1,
+    })
