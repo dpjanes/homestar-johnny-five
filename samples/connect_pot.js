@@ -8,6 +8,7 @@
 var JohnnyFiveBridge = require('../JohnnyFiveBridge').Bridge;
 
 var bridge = new JohnnyFiveBridge({
+    component: "Sensor",
     pin: "A0",
 });
 bridge.discovered = function (bridge) {
@@ -16,7 +17,6 @@ bridge.discovered = function (bridge) {
         console.log("+ state-change", state);
     };
     bridge.connect({
-        connect: "Sensor",
         data_in: function(paramd) {
             console.log(paramd.rawd.value);
         },

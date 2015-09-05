@@ -44,7 +44,8 @@ var JohnnyFiveBridge = function (initd, native) {
 
     self.initd = _.defaults(initd,
         iotdb.keystore().get("bridges/JohnnyFiveBridge/initd"), {
-            poll: 30
+            poll: 30,
+            component: "Pin",
         }
     );
     self.native = native;   // the thing that does the work - keep this name
@@ -112,33 +113,26 @@ JohnnyFiveBridge.prototype.connect = function (connectd) {
 JohnnyFiveBridge.prototype._setup_connections = function () {
     var self = this;
 
-    if (!self.connectd.connect) {
-        logger.error({
-            method: "connect",
-            cause: "programmer error - this needs to be set up at connection time",
-        }, "the 'connectd.connect' parameter must be present");
+    var component_names = self.initd.component;
+    if (!_.is.Array(component_names)) {
+        component_names = [ component_names ];
     }
 
-    var connect_names = self.connectd.connect;
-    if (!_.is.Array(connect_names)) {
-        connect_names = [ connect_names ];
-    }
-
-    connect_names.map(function(connect_name) {
-        var connect_constructor = five[connect_name];
-        if (!connect_constructor) {
+    component_names.map(function(component_name) {
+        var component_constructor = five[component_name];
+        if (!component_constructor) {
             logger.error({
                 method: "connect",
-                connect_constructor: connect_constructor,
+                component_name: component_name,
                 cause: "programmer error",
-            }, "the connect_constructor is not in 'five'");
+            }, "'five' does not have a component called this");
             return;
         }
         var connect_paramd = _.defaults(self.initd, {
             board: self.native,
         });
-        var connect_object = new connect_constructor(connect_paramd);
-        self.fived[connect_name] = connect_object;
+        var connect_object = new component_constructor(connect_paramd);
+        self.fived[component_name] = connect_object;
 
         connect_object.on("change", function() {
             var event = this;

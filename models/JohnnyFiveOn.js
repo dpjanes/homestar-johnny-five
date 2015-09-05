@@ -1,21 +1,19 @@
 /*
- *  JohnnyFiveLED.js
+ *  JohnnyFiveOn.js
  *
  *  David Janes
  *  IOTDB
  *  2015-09-05
  *
- *  IOTDB wrapper for the Johnny Five LED command.
- *  We only deal with the "on/off" part for now
- *  but we'll expand this in the future.
+ *  Turn something On (or Off).
  */
 
 "use strict";
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('JohnnyFiveLED')
-    .description("control LED using Johnny-Five commands")
+exports.Model = iotdb.make_model('JohnnyFiveOn')
+    .description("turn something on")
     .help("requires 'initd.pin'")
     .o(iotdb.boolean.on)
     .make();
@@ -25,16 +23,18 @@ exports.binding = {
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {
-        component: "Led",
+        component: "Pin",
         pin: 13,
+        type: "digital",
+        model: 1,   // output
     },
     connectd: {
         data_out: function (paramd) {
             if (paramd.cookd.on !== undefined) {
                 if (paramd.cookd.on) {
-                    paramd.rawd.Led = "on";
+                    paramd.rawd.Pin = [ "write", 1 ];
                 } else {
-                    paramd.rawd.Led = "off";
+                    paramd.rawd.Pin = [ "write", 0 ];
                 }
             }
         },
