@@ -27,6 +27,7 @@ exports.bindings = [
     // output models
     require('./models/JohnnyFiveLED').binding,
     require('./models/JohnnyFiveOn').binding,
+    require('./models/JohnnyFiveSensorUnit').binding,
     /*
     require('models/JohnnyFiveChainableLED'),
     require('models/JohnnyFiveDHT11'),

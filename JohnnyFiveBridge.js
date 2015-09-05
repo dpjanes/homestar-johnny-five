@@ -160,7 +160,11 @@ JohnnyFiveBridge.prototype._setup_connections = function () {
                 cookd: {},
                 scratchd: self.scratchd,
             };
+
             self.connectd.data_in(paramd);
+            if (!_.is.Empty(paramd.cookd)) {
+                self.pulled(paramd.cookd);
+            }
         });
     });
 };
