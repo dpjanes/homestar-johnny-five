@@ -35,7 +35,7 @@ echo "=================="
         LICENSE \
         homestar.json package.json \
         index.js \
-        FirmataBridge.js \
+        JohnnyFiveBridge.js \
         models/*js \
         |
     ( cd "${NPM_DST}" && tar xvf - )

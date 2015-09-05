@@ -1,5 +1,5 @@
 /*
- *  FirmataMotionSensor.js
+ *  JohnnyFiveMotionSensor.js
  *
  *  David Janes
  *  IOTDB
@@ -10,7 +10,7 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataMotionSensor')
+exports.Model = iotdb.make_model('JohnnyFiveMotionSensor')
     .product("http://www.seeedstudio.com/depot/Grove-PIR-Motion-Sensor-p-802.html")
     .facet(":device.sensor.motion")
     .help("make sure to set initd.pin")

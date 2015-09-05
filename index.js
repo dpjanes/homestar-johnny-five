@@ -22,24 +22,24 @@
 
 "use strict";
 
-exports.Bridge = require('./FirmataBridge').Bridge;
+exports.Bridge = require('./JohnnyFiveBridge').Bridge;
 exports.bindings = [
-    require('./models/FirmataOn').binding,
+    require('./models/JohnnyFiveLED').binding,
     /*
-    require('models/FirmataChainableLED'),
-    require('models/FirmataDHT11'),
-    require('models/FirmataGroveThermistor'),
-    require('models/FirmataInputBoolean'),
-    require('models/FirmataInputUnit'),
-    require('models/FirmataLightDimmer'),
-    require('models/FirmataLightSensor'),
-    require('models/FirmataLightSimple'),
-    require('models/FirmataMotionSensor'),
-    require('models/FirmataNeoPixel'),
-    require('models/FirmataOutput'),
-    require('models/FirmataSoundSensor'),
-    require('models/FirmataSwitch'),
-    require('models/FirmataThreeAxisCompass'),
+    require('models/JohnnyFiveChainableLED'),
+    require('models/JohnnyFiveDHT11'),
+    require('models/JohnnyFiveGroveThermistor'),
+    require('models/JohnnyFiveInputBoolean'),
+    require('models/JohnnyFiveInputUnit'),
+    require('models/JohnnyFiveLightDimmer'),
+    require('models/JohnnyFiveLightSensor'),
+    require('models/JohnnyFiveLightSimple'),
+    require('models/JohnnyFiveMotionSensor'),
+    require('models/JohnnyFiveNeoPixel'),
+    require('models/JohnnyFiveOutput'),
+    require('models/JohnnyFiveSoundSensor'),
+    require('models/JohnnyFiveSwitch'),
+    require('models/JohnnyFiveThreeAxisCompass'),
     */
 ];
 

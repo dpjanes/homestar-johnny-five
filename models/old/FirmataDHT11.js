@@ -1,5 +1,5 @@
 /*
- *  FirmataDHT11.js
+ *  JohnnyFiveDHT11.js
  *
  *  David Janes
  *  IOTDB
@@ -12,7 +12,7 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataDHT11')
+exports.Model = iotdb.make_model('JohnnyFiveDHT11')
     .product("http://www.seeedstudio.com/depot/Grove-TempHumi-Sensor-p-745.html")
     .facet(":device.sensor.humidity")
     .facet(":device.sensor.temperature")

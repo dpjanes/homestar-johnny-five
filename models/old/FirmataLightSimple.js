@@ -1,5 +1,5 @@
 /*
- *  FirmataLightDimmer.js
+ *  JohnnyFiveLightSimple.js
  *
  *  David Janes
  *  IOTDB
@@ -10,7 +10,7 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataLightDimmer')
+exports.Model = iotdb.make_model('JohnnyFiveLightSimple')
     .product("http://www.seeedstudio.com/depot/Grove-Red-LED-p-1142.html")
     .product("http://www.seeedstudio.com/depot/Grove-Blue-LED-p-1139.html")
     .product("http://www.seeedstudio.com/depot/Grove-Green-LED-p-1144.html")
@@ -20,30 +20,13 @@ exports.Model = iotdb.make_model('FirmataLightDimmer')
         iotdb.make_boolean(":on")
             .control()
     )
-    .attribute(
-        iotdb.make_unit(":brightness")
-            .control()
-    )
     .make();
 
 /*
     .driver_identity(":firmata")
     .driver_setup(function(paramd) {
-        paramd.initd.pins = "brightness:mode=analog-output"
-    })
-    .driver_out(function(paramd) {
-        var brightness = 1
-        if (paramd.thingd.on !== undefined) {
-            brightness *= paramd.thingd.on ? 1 : 0
-        }
-        if (paramd.thingd.brightness !== undefined) {
-            brightness *= paramd.thingd.brightness
-        }
-
-        paramd.driverd.brightness = brightness
+        paramd.initd.pins = "on:mode=digital-output"
     })
     .make()
     ;
-
  */
-/*

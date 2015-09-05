@@ -1,5 +1,5 @@
 /*
- *  FirmataThreeAxisCompass.js
+ *  JohnnyFiveThreeAxisCompass.js
  *
  *  David Janes
  *  IOTDB
@@ -8,7 +8,7 @@
 
 "use strict";
 
-exports.Model = iotdb.make_model('FirmataThreeAxisCompass')
+exports.Model = iotdb.make_model('JohnnyFiveThreeAxisCompass')
     .help("make sure to set paramd.initd.declination (in degrees) using http://magnetic-declination.com/")
     .product("http://www.seeedstudio.com/depot/Grove-3Axis-Digital-Compass-p-759.html")
     .facet(":device.sensor.spatial")

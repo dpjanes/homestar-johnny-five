@@ -1,5 +1,5 @@
 /*
- *  FirmataSwitch.js
+ *  JohnnyFiveInputBoolean.js
  *
  *  David Janes
  *  IOTDB
@@ -10,14 +10,14 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataSwitch')
+exports.Model = iotdb.make_model('JohnnyFiveInputBoolean')
     .product("http://www.seeedstudio.com/depot/Grove-ButtonP-p-1243.html")
     .product("http://www.seeedstudio.com/depot/Grove-Button-p-766.html")
     .product("http://www.seeedstudio.com/depot/Grove-SwitchP-p-1252.html")
-    .help("make sure to set initd.pin")
     .facet(":device.control.switch")
+    .help("make sure to set initd.pin")
     .attribute(
-        iotdb.make_boolean(":on", "value")
+        iotdb.make_boolean(":value")
             .reading()
     )
     .make();

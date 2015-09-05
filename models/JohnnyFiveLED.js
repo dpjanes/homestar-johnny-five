@@ -1,16 +1,18 @@
 /*
- *  FirmataOn.js
+ *  JohnnyFiveLED.js
  *
  *  David Janes
  *  IOTDB
  *  2014-04-30
+ *
+ *  IOTDB wrapper for the Johnny Five LED command
  */
 
 "use strict";
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataOn')
+exports.Model = iotdb.make_model('JohnnyFiveLED')
     .product("http://www.seeedstudio.com/depot/Grove-Red-LED-p-1142.html")
     .product("http://www.seeedstudio.com/depot/Grove-Blue-LED-p-1139.html")
     .product("http://www.seeedstudio.com/depot/Grove-Green-LED-p-1144.html")
@@ -24,7 +26,7 @@ exports.Model = iotdb.make_model('FirmataOn')
 
 exports.binding = {
     model: exports.Model,
-    bridge: require('../FirmataBridge').Bridge,
+    bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     connectd: {
         connect: "Led",

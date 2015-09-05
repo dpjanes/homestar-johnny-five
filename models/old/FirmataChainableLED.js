@@ -1,5 +1,5 @@
 /*
- *  FirmataChainableLED.js
+ *  JohnnyFiveChainableLED.js
  *
  *  David Janes
  *  IOTDB
@@ -10,7 +10,7 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataChainableLED')
+exports.Model = iotdb.make_model('JohnnyFiveChainableLED')
     .product("http://www.seeedstudio.com/depot/Grove-Chainable-RGB-LED-p-850.html")
     .facet(":device.lighting")
     .attribute(

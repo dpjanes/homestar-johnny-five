@@ -1,21 +1,21 @@
 /*
- *  FirmataSoundSensor.js
+ *  JohnnyFiveInputUnit.js
  *
  *  David Janes
  *  IOTDB
- *  2014-05-01
+ *  2014-04-30
  */
 
 "use strict";
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataSoundSensor')
-    .product("http://www.seeedstudio.com/depot/Grove-Sound-Sensor-p-752.html")
+exports.Model = iotdb.make_model('JohnnyFiveInputUnit')
+    .product("http://www.seeedstudio.com/depot/Grove-Rotary-Angle-Sensor-p-770.html")
+    .facet(":device.control")
     .help("make sure to set initd.pin")
-    .facet(":device.sensor.sound")
     .attribute(
-        iotdb.make_unit(":sensor.sound")
+        iotdb.make_unit(":value")
             .reading()
     )
     .make();

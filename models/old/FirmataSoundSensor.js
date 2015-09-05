@@ -1,5 +1,5 @@
 /*
- *  FirmataLightSensor.js
+ *  JohnnyFiveSoundSensor.js
  *
  *  David Janes
  *  IOTDB
@@ -10,12 +10,12 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataLightSensor')
-    .product("http://www.seeedstudio.com/depot/Grove-Light-Sensor-p-746.html")
-    .facet(":device.sensor.light")
+exports.Model = iotdb.make_model('JohnnyFiveSoundSensor')
+    .product("http://www.seeedstudio.com/depot/Grove-Sound-Sensor-p-752.html")
     .help("make sure to set initd.pin")
+    .facet(":device.sensor.sound")
     .attribute(
-        iotdb.make_unit(":sensor.light")
+        iotdb.make_unit(":sensor.sound")
             .reading()
     )
     .make();

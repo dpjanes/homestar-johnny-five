@@ -1,5 +1,5 @@
 /*
- *  FirmataBridge.js
+ *  JohnnyFiveBridge.js
  *
  *  David Janes
  *  IOTDB.org
@@ -30,7 +30,7 @@ var five = require('johnny-five');
 
 var logger = bunyan.createLogger({
     name: 'homestar-firmata',
-    module: 'FirmataBridge',
+    module: 'JohnnyFiveBridge',
 });
 
 /**
@@ -39,18 +39,18 @@ var logger = bunyan.createLogger({
  *  @param {object|undefined} native
  *  only used for instances, should be 
  */
-var FirmataBridge = function (initd, native) {
+var JohnnyFiveBridge = function (initd, native) {
     var self = this;
 
     self.initd = _.defaults(initd,
-        iotdb.keystore().get("bridges/FirmataBridge/initd"), {
+        iotdb.keystore().get("bridges/JohnnyFiveBridge/initd"), {
             poll: 30
         }
     );
     self.native = native;   // the thing that does the work - keep this name
 
     if (self.native) {
-        self.queue = _.queue("FirmataBridge");
+        self.queue = _.queue("JohnnyFiveBridge");
         self.native.__number = 1;
         self.connectd = {};
         self.fived = {};
@@ -58,10 +58,10 @@ var FirmataBridge = function (initd, native) {
     }
 };
 
-FirmataBridge.prototype = new iotdb.Bridge();
+JohnnyFiveBridge.prototype = new iotdb.Bridge();
 
-FirmataBridge.prototype.name = function () {
-    return "FirmataBridge";
+JohnnyFiveBridge.prototype.name = function () {
+    return "JohnnyFiveBridge";
 };
 
 /* --- lifecycle --- */
@@ -69,7 +69,7 @@ FirmataBridge.prototype.name = function () {
 /**
  *  See {iotdb.bridge.Bridge#discover} for documentation.
  */
-FirmataBridge.prototype.discover = function () {
+JohnnyFiveBridge.prototype.discover = function () {
     var self = this;
 
     logger.info({
@@ -78,19 +78,19 @@ FirmataBridge.prototype.discover = function () {
 
     /*
      *  This is the core bit of discovery. As you find new
-     *  thimgs, make a new FirmataBridge and call 'discovered'.
+     *  thimgs, make a new JohnnyFiveBridge and call 'discovered'.
      *  The first argument should be self.initd, the second
      *  the thing that you do work with
      */
     self._firmata(function(error, board) {
-        self.discovered(new FirmataBridge(self.initd, board));
+        self.discovered(new JohnnyFiveBridge(self.initd, board));
     });
 };
 
 /**
  *  See {iotdb.bridge.Bridge#connect} for documentation.
  */
-FirmataBridge.prototype.connect = function (connectd) {
+JohnnyFiveBridge.prototype.connect = function (connectd) {
     var self = this;
     if (!self.native) {
         return;
@@ -109,7 +109,7 @@ FirmataBridge.prototype.connect = function (connectd) {
     self.pull();
 };
 
-FirmataBridge.prototype._setup_connections = function () {
+JohnnyFiveBridge.prototype._setup_connections = function () {
     var self = this;
 
     if (!self.connectd.connect) {
@@ -171,7 +171,7 @@ FirmataBridge.prototype._setup_connections = function () {
     });
 };
 
-FirmataBridge.prototype._setup_polling = function () {
+JohnnyFiveBridge.prototype._setup_polling = function () {
     var self = this;
     if (!self.initd.poll) {
         return;
@@ -187,7 +187,7 @@ FirmataBridge.prototype._setup_polling = function () {
     }, self.initd.poll * 1000);
 };
 
-FirmataBridge.prototype._forget = function () {
+JohnnyFiveBridge.prototype._forget = function () {
     var self = this;
     if (!self.native) {
         return;
@@ -204,7 +204,7 @@ FirmataBridge.prototype._forget = function () {
 /**
  *  See {iotdb.bridge.Bridge#disconnect} for documentation.
  */
-FirmataBridge.prototype.disconnect = function () {
+JohnnyFiveBridge.prototype.disconnect = function () {
     var self = this;
     if (!self.native || !self.native) {
         return;
@@ -218,7 +218,7 @@ FirmataBridge.prototype.disconnect = function () {
 /**
  *  See {iotdb.bridge.Bridge#push} for documentation.
  */
-FirmataBridge.prototype.push = function (pushd, done) {
+JohnnyFiveBridge.prototype.push = function (pushd, done) {
     var self = this;
     if (!self.native) {
         done(new Error("not connected"));
@@ -276,7 +276,7 @@ FirmataBridge.prototype.push = function (pushd, done) {
 /**
  *  See {iotdb.bridge.Bridge#pull} for documentation.
  */
-FirmataBridge.prototype.pull = function () {
+JohnnyFiveBridge.prototype.pull = function () {
     var self = this;
     if (!self.native) {
         return;
@@ -289,18 +289,18 @@ FirmataBridge.prototype.pull = function () {
 /**
  *  See {iotdb.bridge.Bridge#meta} for documentation.
  */
-FirmataBridge.prototype.meta = function () {
+JohnnyFiveBridge.prototype.meta = function () {
     var self = this;
     if (!self.native) {
         return;
     }
 
     return {
-        "iot:thing-id": _.id.thing_urn.unique("Firmata", self.native.id, self.native.__number),
-        "schema:name": self.native.name || "Firmata",
+        "iot:thing-id": _.id.thing_urn.unique("JohnnyFive", self.native.id, self.native.__number),
+        "schema:name": self.native.name || "JohnnyFive",
 
         // "iot:thing-number": self.initd.number,
-        // "iot:device-id": _.id.thing_urn.unique("Firmata", self.native.uuid),
+        // "iot:device-id": _.id.thing_urn.unique("JohnnyFive", self.native.uuid),
         // "schema:manufacturer": "",
         // "schema:model": "",
     };
@@ -309,14 +309,14 @@ FirmataBridge.prototype.meta = function () {
 /**
  *  See {iotdb.bridge.Bridge#reachable} for documentation.
  */
-FirmataBridge.prototype.reachable = function () {
+JohnnyFiveBridge.prototype.reachable = function () {
     return this.native !== null;
 };
 
 /**
  *  See {iotdb.bridge.Bridge#configure} for documentation.
  */
-FirmataBridge.prototype.configure = function (app) {};
+JohnnyFiveBridge.prototype.configure = function (app) {};
 
 /* -- internals -- */
 var __singleton;
@@ -324,13 +324,15 @@ var __singleton;
 /**
  *  If you need a singleton to access the library
  */
-FirmataBridge.prototype._firmata = function (done) {
+JohnnyFiveBridge.prototype._firmata = function (done) {
     var self = this;
 
     if (__singleton) {
         done(null, __singleton);
     } else {
-        var board = new five.Board();
+        var board = new five.Board({
+            repl: false,
+        });
         board.on("ready", function() {
             __singleton = board;
             done(null, __singleton);
@@ -341,4 +343,4 @@ FirmataBridge.prototype._firmata = function (done) {
 /*
  *  API
  */
-exports.Bridge = FirmataBridge;
+exports.Bridge = JohnnyFiveBridge;

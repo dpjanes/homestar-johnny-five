@@ -6,7 +6,7 @@
     "dependencies": {
         "serialport": "~1.6.3"
     }, 
-    "description": "HomeStar / IOTDB Bridge for Arduino / Firmata", 
+    "description": "HomeStar / IOTDB Bridge for Arduino / JohnnyFive", 
     "devDependencies": {
         "grunt": "~0.4.5", 
         "grunt-contrib-jshint": "~0.10.0", 

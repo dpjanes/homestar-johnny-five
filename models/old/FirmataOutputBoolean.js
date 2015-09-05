@@ -1,5 +1,5 @@
 /*
- *  FirmataOutputBoolean.js
+ *  JohnnyFiveOutputBoolean.js
  *
  *  David Janes
  *  IOTDB
@@ -10,7 +10,7 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataOutputBoolean')
+exports.Model = iotdb.make_model('JohnnyFiveOutputBoolean')
     .help("make sure to set initd.pin")
     .attribute(
         iotdb.make_boolean(":value")

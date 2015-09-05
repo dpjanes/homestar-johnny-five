@@ -1,5 +1,5 @@
 /*
- *  FirmataNeoPixel.js
+ *  JohnnyFiveNeoPixel.js
  *
  *  David Janes
  *  IOTDB
@@ -10,7 +10,7 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataNeoPixel')
+exports.Model = iotdb.make_model('JohnnyFiveNeoPixel')
     .product("http://www.adafruit.com/category/168")
     .facet(":device.lighting")
     .attribute(

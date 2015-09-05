@@ -1,6 +1,6 @@
 # homestar-firmata
 
-IOTDB / HomeStar Controller for Arduino / Firmata devices
+IOTDB / HomeStar Controller for Arduino / JohnnyFive devices
 
 <img src="https://github.com/dpjanes/iotdb-homestar/blob/master/docs/HomeStar.png" align="right" />
 

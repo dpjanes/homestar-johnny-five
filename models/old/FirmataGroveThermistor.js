@@ -1,5 +1,5 @@
 /*
- *  FirmataGroveThermistor.js
+ *  JohnnyFiveGroveThermistor.js
  *
  *  David Janes
  *  IOTDB
@@ -10,7 +10,7 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('FirmataGroveThermistor')
+exports.Model = iotdb.make_model('JohnnyFiveGroveThermistor')
     .product("http://www.seeedstudio.com/depot/Grove-Temperature-Sensor-p-774.html")
     .facet(":device.sensor.temperature")
     .help("make sure to set initd.pin (analog)")
