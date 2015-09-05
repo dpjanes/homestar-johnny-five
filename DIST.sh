@@ -6,8 +6,7 @@
 #   2015-02-10
 #
 
-exit 0
-PACKAGE=iotdb-firmata
+PACKAGE=homestar-johnny-five
 DIST_ROOT=/var/tmp/.dist.$$
 
 if [ ! -d "$DIST_ROOT" ]

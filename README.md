@@ -1,4 +1,4 @@
-# homestar-firmata
+# homestar-johnny-five
 
 IOTDB / HomeStar Controller for Arduino / JohnnyFive devices
 
@@ -11,7 +11,7 @@ See: https://github.com/dpjanes/iotdb-homestar#installation
 
 Then
 
-    $ homestar install homestar-firmata
+    $ homestar install homestar-johnny-five
 
 # Quick Start
 
@@ -19,7 +19,7 @@ XXX
 
 	$ npm install -g homestar ## with 'sudo' if error
 	$ homestar setup
-	$ homestar install homestar-firmata
+	$ homestar install homestar-johnny-five
 	$ node
 	>>> iotdb = require('iotdb')
 	>>> iot = iotdb.iot()

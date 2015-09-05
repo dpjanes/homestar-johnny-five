@@ -28,8 +28,13 @@ var bunyan = iotdb.bunyan;
 
 var five = require('johnny-five');
 
+try {
+    var io_edison = require("galileo-io");
+} catch (x) {
+};
+
 var logger = bunyan.createLogger({
-    name: 'homestar-firmata',
+    name: 'homestar-johnny-five',
     module: 'JohnnyFiveBridge',
 });
 
@@ -318,6 +323,7 @@ JohnnyFiveBridge.prototype.configure = function (app) {};
 
 /* -- internals -- */
 var __singleton;
+var __pendings;
 
 /**
  *  If you need a singleton to access the library
@@ -327,12 +333,30 @@ JohnnyFiveBridge.prototype._firmata = function (done) {
 
     if (__singleton) {
         done(null, __singleton);
+    } else if (__pendings) {
+        __pendings.push(done);
     } else {
-        var board = new five.Board({
+        __pendings = [];
+
+        var boardd = {
             repl: false,
-        });
+        };
+
+        if (io_edison) {
+            logger.info({
+                method: "_firmat"
+            }, "using 'galileo-io' - assuming on an Edison or Galileo");
+            boardd.io = new io_edison();
+        }
+
+        var board = new five.Board(boardd);
         board.on("ready", function() {
             __singleton = board;
+
+            for (var _pending in __pendings) {
+                _pending(null, __singleton);
+            }
+
             done(null, __singleton);
         });
     }

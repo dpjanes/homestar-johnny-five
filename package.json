@@ -1,10 +1,10 @@
 {
     "author": "David P. Janes <davidjanes@iotdb.org> (https://iotdb.org)", 
     "bugs": {
-        "url": "https://github.com/dpjanes/iotdb-firmata/issues"
+        "url": "https://github.com/dpjanes/iotdb-johnny-five/issues"
     }, 
     "dependencies": {
-        "serialport": "~1.6.3"
+        "johnny-five": ""
     }, 
     "description": "HomeStar / IOTDB Bridge for Arduino / JohnnyFive", 
     "devDependencies": {
@@ -22,17 +22,17 @@
     "homestar": {}, 
     "license": "Apache-2.0", 
     "main": "index.js", 
-    "name": "iotdb-firmata", 
+    "name": "iotdb-johnny-five", 
     "peerDependencies": {
         "iotdb": ">=0.6.3"
     }, 
     "private": false, 
     "repository": {
         "type": "git", 
-        "url": "https://github.com/dpjanes/iotdb-firmata"
+        "url": "https://github.com/dpjanes/iotdb-johnny-five"
     }, 
     "scripts": {
         "test": "grunt"
     }, 
-    "version": "0.1.0"
+    "version": "0.0.0"
 }
