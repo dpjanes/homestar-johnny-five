@@ -29,6 +29,7 @@ exports.bindings = [
     require('./models/JohnnyFiveOn').binding,
 
     // input models
+    require('./models/JohnnyFiveSensor').binding,
     require('./models/JohnnyFiveSensorUnit').binding,
     require('./models/JohnnyFiveSensorPercent').binding,
 
