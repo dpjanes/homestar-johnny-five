@@ -27,7 +27,13 @@ exports.bindings = [
     // output models
     require('./models/JohnnyFiveLED').binding,
     require('./models/JohnnyFiveOn').binding,
+
+    // input models
     require('./models/JohnnyFiveSensorUnit').binding,
+    require('./models/JohnnyFiveSensorPercent').binding,
+
+    // Grove input models
+    require('./models/GroveMoistureSensor').binding,
     /*
     require('models/JohnnyFiveChainableLED'),
     require('models/JohnnyFiveDHT11'),
