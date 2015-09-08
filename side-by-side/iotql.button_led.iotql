@@ -1,0 +1,19 @@
+-- 
+-- THIS DOES NOT WORK (yet)
+-- just a sketch of an idea
+-- 
+
+CONNECT MODEL JohnnyFiveButton WITH pin = 4;
+CONNECT MODEL JohnnyFiveLED WITH pin = 6;
+
+
+CREATE TRIGGER
+    LED
+WHERE
+    meta:model-code = 'johnny-five-led'
+BEGIN
+    UPDATE
+        state:on = $state:on
+    WHERE
+        meta:model-code = 'johnny-five-button'
+END;

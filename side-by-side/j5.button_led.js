@@ -1,13 +1,10 @@
 /**
- *  button_led_j5.js
+ *  j5.button_led.js
  *
  *  Demonstrate connecting a Button to a LED using Johnny Five
  *
  *  Original:
  *  http://johnny-five.io/examples/grove-button-edison/
- *
- *  IOTDB version
- *  button_led_iotdb.js
  */
 
 var five = require("johnny-five");
