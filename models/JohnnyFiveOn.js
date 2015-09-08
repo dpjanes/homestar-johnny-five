@@ -15,7 +15,7 @@ var iotdb = require("iotdb")
 exports.Model = iotdb.make_model('JohnnyFiveOn')
     .description("turn something on")
     .help("requires 'initd.pin'")
-    .o(iotdb.boolean.on)
+    .io(iotdb.boolean.on)
     .make();
 
 exports.binding = {

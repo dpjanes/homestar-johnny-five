@@ -139,11 +139,14 @@ JohnnyFiveBridge.prototype._setup_connections = function () {
         var connect_object = new component_constructor(connect_paramd);
         self.fived[component_name] = connect_object;
 
-        connect_object.on("change", function() {
+        var old_emitter = connect_object.emit
+        connect_object.emit = function() {
             var event = this;
 
+            old_emitter.apply(old_emitter, arguments);
+
             var rawd = {
-                "event": "change",
+                "event": arguments[0], 
             };
 
             // scrub to get the Shape, a bit of a hack
@@ -170,7 +173,7 @@ JohnnyFiveBridge.prototype._setup_connections = function () {
             if (!_.is.Empty(paramd.cookd)) {
                 self.pulled(paramd.cookd);
             }
-        });
+        }
     });
 };
 
@@ -299,7 +302,7 @@ JohnnyFiveBridge.prototype.meta = function () {
     }
 
     return {
-        "iot:thing-id": _.id.thing_urn.unique("JohnnyFive", self.native.id, self.native.__number),
+        "iot:thing-id": _.id.thing_urn.unique("JohnnyFive", self.native.id, self.initd.pin || 0),
         "schema:name": self.native.name || "JohnnyFive",
 
         // "iot:thing-number": self.initd.number,
@@ -353,9 +356,9 @@ JohnnyFiveBridge.prototype._firmata = function (done) {
         board.on("ready", function() {
             __singleton = board;
 
-            for (var _pending in __pendings) {
+            __pendings.map(function(_pending) {
                 _pending(null, __singleton);
-            }
+            });
 
             done(null, __singleton);
         });

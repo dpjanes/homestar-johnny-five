@@ -15,9 +15,8 @@
 var iotdb = require("iotdb")
 
 exports.Model = iotdb.make_model('JohnnyFiveLED')
-    .description("control LED using Johnny-Five commands")
-    .help("requires 'initd.pin'")
-    .o(iotdb.boolean.on)
+    .description("control with Johnny-Five.LED")
+    .io(iotdb.boolean.on)
     .make();
 
 exports.binding = {

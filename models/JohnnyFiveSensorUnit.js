@@ -24,7 +24,7 @@ exports.binding = {
     },
     connectd: {
         data_in: function (paramd) {
-            if (paramd.rawd.value !== undefined) {
+            if ((paramd.rawd.value !== undefined) && (paramd.rawd.event === "change")) {
                 paramd.cookd.value = paramd.rawd.value / 1024.0;
             }
         },
