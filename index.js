@@ -26,6 +26,7 @@ exports.Bridge = require('./JohnnyFiveBridge').Bridge;
 exports.bindings = [
     // output models
     require('./models/JohnnyFiveLED').binding,
+    require('./models/JohnnyFivePiezo').binding,
     require('./models/JohnnyFiveOn').binding,
 
     // input models
