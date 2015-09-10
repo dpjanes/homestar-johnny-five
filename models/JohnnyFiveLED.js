@@ -17,6 +17,7 @@ var iotdb = require("iotdb")
 exports.Model = iotdb.make_model('JohnnyFiveLED')
     .description("control with Johnny-Five.LED")
     .io(iotdb.boolean.on)
+    .io(iotdb.make_number(":effect.blink", "blink"))
     .make();
 
 exports.binding = {
@@ -29,11 +30,19 @@ exports.binding = {
     },
     connectd: {
         data_out: function (paramd) {
+            if (paramd.cookd.blink !== undefined) {
+                paramd.scratchd.blink  = paramd.cookd.blink * 1000;
+            }
+
             if (paramd.cookd.on !== undefined) {
                 if (paramd.cookd.on) {
-                    paramd.rawd.Led = "on";
+                    if (paramd.scratchd.blink) {
+                        paramd.rawd.Led = [ "blink", paramd.scratchd.blink ];
+                    } else {
+                        paramd.rawd.Led = "on";
+                    }
                 } else {
-                    paramd.rawd.Led = "off";
+                    paramd.rawd.Led = [ [ "off", ], [ "stop" ]];
                 }
             }
         },

@@ -245,7 +245,7 @@ JohnnyFiveBridge.prototype.push = function (pushd, done) {
     };
     self.connectd.data_out(paramd);
 
-    _.mapObject(paramd.rawd, function(params, key_object_name) {
+    _.mapObject(paramd.rawd, function(paramss, key_object_name) {
         var key_object = self.fived[key_object_name];
         if (!key_object) {
             logger.error({
@@ -256,18 +256,24 @@ JohnnyFiveBridge.prototype.push = function (pushd, done) {
             return;
         }
 
-        if (!_.is.Array(params)) {
-            params = [ params ];
+        if (!_.is.Array(paramss)) {
+            paramss = [ paramss ];
         }
 
-        var key_function_name = _.first(params);
-        params.splice(0, 1);
-        var key_function = key_object[key_function_name];
+        if (!_.is.Array(paramss[0])) {
+            paramss = [ paramss ];
+        }
 
         var qitem = {
             id: key_object_name,
             run: function () {
-                key_function.apply(key_object, params);
+                paramss.map(function(params) {
+                    var key_function_name = _.first(params);
+                    params.splice(0, 1);
+                    var key_function = key_object[key_function_name];
+
+                    key_function.apply(key_object, params);
+                });
 
                 self.queue.finished(qitem);
             },
