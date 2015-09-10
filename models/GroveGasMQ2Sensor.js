@@ -12,7 +12,7 @@ var iotdb = require("iotdb")
 
 exports.Model = iotdb.make_model('GroveGasMQ2Sensor')
     .facet(":sensor.chemical")
-    .i(iotdb.sensor.number.chemical)
+    .i(iotdb.sensor.unit.chemical)
     .make();
 
 exports.binding = {
@@ -26,7 +26,7 @@ exports.binding = {
     connectd: {
         data_in: function (paramd) {
             if ((paramd.rawd.value !== undefined) && (paramd.rawd.event === "change")) {
-                paramd.cookd.chemical = paramd.rawd.value;
+                paramd.cookd.chemical = paramd.rawd.value / 102.4;
             }
         },
     },

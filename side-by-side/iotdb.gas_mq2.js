@@ -1,5 +1,5 @@
 /**
- *  iotdb.flame.js
+ *  iotdb.gas_mq2.js
  *
  *  Demonstrate Grove MQ2 Gas Sensor using IOTDB
  *
@@ -9,7 +9,7 @@
 
 var iotdb = require('iotdb');
 
-var flame = iotdb.connect("GroveGasMQ2Sensor", {
+var gas = iotdb.connect("GroveGasMQ2Sensor", {
     pin: 4,
 });
 var alarm = iotdb.connect("JohnnyFivePiezo", {
@@ -17,8 +17,8 @@ var alarm = iotdb.connect("JohnnyFivePiezo", {
 });
 alarm.set(":duration", 5.0);
 
-flame.on(":sensor.chemical", function(thing, attribute, value) {
-    if (value > 600) {
+gas.on(":sensor.chemical", function(thing, attribute, value) {
+    if (value > 0.6) {
         alarm.set(":frequency", 440);
     }
 });

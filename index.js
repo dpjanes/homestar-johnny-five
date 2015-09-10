@@ -39,6 +39,9 @@ exports.bindings = [
     require('./models/GroveGasMQ2Sensor').binding,
     require('./models/GroveMoistureSensor').binding,
     require('./models/GroveFlameSensor').binding,
+
+    // Grove output models
+    require('./models/GroveRelay').binding,
     /*
     require('models/JohnnyFiveChainableLED'),
     require('models/JohnnyFiveDHT11'),

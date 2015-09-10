@@ -1,19 +1,18 @@
 /*
- *  JohnnyFiveOn.js
+ *  GroveRelay.js
  *
  *  David Janes
  *  IOTDB
- *  2015-09-05
+ *  2015-09-10
  *
- *  Turn something On (or Off).
+ *  Turn Relay On (or Off).
  */
 
 "use strict";
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('JohnnyFiveOn')
-    .description("turn something on")
+exports.Model = iotdb.make_model('GroveRelay')
     .io(iotdb.boolean.on)
     .make();
 
