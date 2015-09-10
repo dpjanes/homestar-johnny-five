@@ -12,7 +12,7 @@ var iotdb = require("iotdb")
 
 exports.Model = iotdb.make_model('GroveMoistureSensor')
     .facet(":sensor.water")
-    .i("value", iotdb.sensor.number.water)
+    .i(iotdb.sensor.number.water)
     .make();
 
 exports.binding = {
@@ -26,7 +26,7 @@ exports.binding = {
     connectd: {
         data_in: function (paramd) {
             if ((paramd.rawd.value !== undefined) && (paramd.rawd.event === "change")) {
-                paramd.cookd.value = paramd.rawd.value;
+                paramd.cookd.water = paramd.rawd.value;
             }
         },
     },

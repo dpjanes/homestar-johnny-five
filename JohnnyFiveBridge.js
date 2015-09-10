@@ -362,6 +362,9 @@ JohnnyFiveBridge.prototype._firmata = function (done) {
 
             done(null, __singleton);
         });
+        board.on("error", function() {
+            console.log("J5.ERROR", arguments);
+        });
     }
 };
 
