@@ -11,7 +11,7 @@
 var iotdb = require("iotdb")
 
 exports.Model = iotdb.make_model('JohnnyFiveSensorUnit')
-    .i("value", iotdb.sensor.unit)
+    .i("sensor", iotdb.sensor.unit)
     .make();
 
 exports.binding = {
@@ -25,7 +25,7 @@ exports.binding = {
     connectd: {
         data_in: function (paramd) {
             if ((paramd.rawd.value !== undefined) && (paramd.rawd.event === "change")) {
-                paramd.cookd.value = paramd.rawd.value / 1024.0;
+                paramd.cookd.sensor = paramd.rawd.value / 1024.0;
             }
         },
     },

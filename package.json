@@ -4,7 +4,7 @@
         "url": "https://github.com/dpjanes/homestar-johnny-five/issues"
     }, 
     "dependencies": {
-        "johnny-five": "~0.8.90"
+        "johnny-five": "~0.8.91"
     }, 
     "description": "HomeStar / IOTDB Bridge for Arduino / JohnnyFive", 
     "devDependencies": {
@@ -24,7 +24,7 @@
     "main": "index.js", 
     "name": "homestar-johnny-five", 
     "peerDependencies": {
-        "iotdb": "~0.10.3"
+        "iotdb": "~0.10.5"
     }, 
     "private": false, 
     "repository": {
@@ -34,5 +34,5 @@
     "scripts": {
         "test": "grunt"
     }, 
-    "version": "0.0.2"
+    "version": "0.0.3"
 }

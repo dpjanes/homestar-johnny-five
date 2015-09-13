@@ -10,7 +10,7 @@ var iotdb = require('iotdb');
 var iot = iotdb.iot();
 
 var things = iot.connect('JohnnyFiveLED', {
-    pin: 2
+    pin: 6
 });
 things.on("istate", function(thing) {
     console.log("+", "state", thing.thing_id(), "\n ", thing.state("istate"));
