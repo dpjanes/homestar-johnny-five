@@ -30,9 +30,9 @@ exports.binding = {
         data_out: function (paramd) {
             if (paramd.cookd.on !== undefined) {
                 if (paramd.cookd.on) {
-                    paramd.rawd.Pin = [ "write", 1 ];
+                    paramd.rawd.Pin.push([ "write", 1 ]);
                 } else {
-                    paramd.rawd.Pin = [ "write", 0 ];
+                    paramd.rawd.Pin.push([ "write", 0 ]);
                 }
             }
         },

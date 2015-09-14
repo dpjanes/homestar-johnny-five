@@ -40,7 +40,7 @@ exports.binding = {
                     paramd.scratchd.duration = 1000;
                 }
 
-                paramd.rawd.Piezo = [ "frequency", paramd.cookd.frequency, paramd.scratchd.duration ];
+                paramd.rawd.Piezo.push([ "frequency", paramd.cookd.frequency, paramd.scratchd.duration ]);
             }
         },
     },

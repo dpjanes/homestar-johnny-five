@@ -42,20 +42,17 @@ exports.binding = {
             if (paramd.cookd.on !== undefined) {
                 if (paramd.cookd.on) {
                     if (paramd.scratchd.blink) {
-                        paramd.rawd.Led = [[ "blink", paramd.scratchd.blink ]];
+                        paramd.rawd.Led.push([ "blink", paramd.scratchd.blink ]);
                     } else {
-                        paramd.rawd.Led = [[ "on" ]];
+                        paramd.rawd.Led.push([ "on" ]);
                     }
                 } else {
-                    paramd.rawd.Led = [[ "off", ], [ "stop" ]];
+                    paramd.rawd.Led.push([ "off" ]);
+                    paramd.rawd.Led.push([ "stop" ]);
                 }
             }
 
             if ((paramd.cookd.brightness !== undefined) && (paramd.cookd.brightness > 0)) {
-                if (paramd.rawd.Led === undefined) {
-                    paramd.rawd.Led = [];
-                }
-
                 paramd.rawd.Led.push([ "brightness", paramd.cookd.brightness * 255 ]);
             }
         },

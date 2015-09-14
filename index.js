@@ -39,6 +39,7 @@ exports.bindings = [
     require('./models/GroveGasMQ2Sensor').binding,
     require('./models/GroveMoistureSensor').binding,
     require('./models/GroveFlameSensor').binding,
+    require('./models/GroveRGBLCD').binding,
 
     // Grove output models
     require('./models/GroveRelay').binding,

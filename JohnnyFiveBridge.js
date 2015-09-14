@@ -61,6 +61,11 @@ var JohnnyFiveBridge = function (initd, native) {
         self.connectd = {};
         self.fived = {};
         self.scratchd = {};
+
+        self.component_names = self.initd.component;
+        if (!_.is.Array(self.component_names)) {
+            self.component_names = [ self.component_names ];
+        }
     }
 };
 
@@ -118,12 +123,7 @@ JohnnyFiveBridge.prototype.connect = function (connectd) {
 JohnnyFiveBridge.prototype._setup_connections = function () {
     var self = this;
 
-    var component_names = self.initd.component;
-    if (!_.is.Array(component_names)) {
-        component_names = [ component_names ];
-    }
-
-    component_names.map(function(component_name) {
+    self.component_names.map(function(component_name) {
         var component_constructor = five[component_name];
         if (!component_constructor) {
             logger.error({
@@ -238,8 +238,14 @@ JohnnyFiveBridge.prototype.push = function (pushd, done) {
         pushd: pushd
     }, "push");
 
+    var rawd = [];
+
+    self.component_names.map(function(component_name) {
+        rawd[component_name] = [];
+    });
+
     var paramd = {
-        rawd: {},
+        rawd: rawd,
         cookd: pushd,
         scratchd: self.scratchd,
     };
@@ -254,14 +260,6 @@ JohnnyFiveBridge.prototype.push = function (pushd, done) {
                 cause: "programmer error - this needs to be set up at connection time",
             }, "key_object_name not found or initialized");
             return;
-        }
-
-        if (!_.is.Array(paramss)) {
-            paramss = [ paramss ];
-        }
-
-        if (!_.is.Array(paramss[0])) {
-            paramss = [ paramss ];
         }
 
         var qitem = {
