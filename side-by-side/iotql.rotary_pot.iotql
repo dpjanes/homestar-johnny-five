@@ -1,0 +1,13 @@
+CONNECT MODEL JohnnyFiveSensorUnit WITH pin = "A0", meta:name = "The Sensor";
+CONNECT MODEL JohnnyFiveLED WITH pin = 6, meta:name = "The LED";
+
+CREATE RULE
+    RotaryPot
+WHERE
+    meta:name = "The Sensor"
+BEGIN
+    SET
+        state:brightness = $_$state:sensor
+    WHERE
+        meta:name = "The LED"
+END;

@@ -1,0 +1,16 @@
+CONNECT MODEL JohnnyFiveSensorUnit WITH pin = "A0", meta:name = "The Sensor";
+CONNECT MODEL GroveRGBLCD WITH pin = 6, meta:name = "The LCD";
+
+CREATE RULE
+    ButtonLCD
+WHERE
+    meta:name = "The Sensor"
+BEGIN
+    LET $hex = color:hsl_to_hex($_$state:value, 1, 0.5)
+
+    SET
+        state:color = $hex,
+        state:message.text = $hex
+    WHERE
+        meta:name = "The LCD"
+END;
