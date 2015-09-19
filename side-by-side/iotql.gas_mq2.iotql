@@ -1,0 +1,17 @@
+CONNECT MODEL GroveGasMQ2Sensor WITH pin = 4, meta:name = "The Sensor";
+CONNECT MODEL JohnnyFivePiezo WITH pin = 6, meta:name = "The Alarm";
+
+SET state:duration = 5 WHERE meta:name = "The Alarm";
+
+CREATE RULE
+    GasSensor
+WHERE
+    meta:name = "The Sensor"
+AND
+    state:sensor.chemical > 0.6
+BEGIN
+    SET
+        state:frequency = 440
+    WHERE
+        meta:name = "The Alarm"
+END;

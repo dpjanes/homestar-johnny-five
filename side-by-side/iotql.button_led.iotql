@@ -1,19 +1,13 @@
--- 
--- THIS DOES NOT WORK (yet)
--- just a sketch of an idea
--- 
+CONNECT MODEL JohnnyFiveButton WITH pin = 4, meta:name = "The Button";
+CONNECT MODEL JohnnyFiveLED WITH pin = 6, meta:name = "The LED";
 
-CONNECT MODEL JohnnyFiveButton WITH pin = 4;
-CONNECT MODEL JohnnyFiveLED WITH pin = 6;
-
-
-CREATE TRIGGER
-    LED
+CREATE RULE
+    ButtonLED
 WHERE
-    meta:model-code = 'johnny-five-led'
+    meta:name = "The Button"
 BEGIN
-    UPDATE
-        state:on = $state:on
+    SET
+        state:on = $_$state:on
     WHERE
-        meta:model-code = 'johnny-five-button'
+        meta:name = "The LED"
 END;

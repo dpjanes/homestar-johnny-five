@@ -1,0 +1,15 @@
+CONNECT MODEL GroveMoistureSnsor WITH pin = "A0", meta:name = "The Sensor";
+CONNECT MODEL GroveRelay WITH pin = 6, meta:name = "The Relay";
+
+CREATE RULE
+    MoistureSensor
+WHERE
+    meta:name = "The Sensor"
+AND
+    state:sensor.water < 0.2
+BEGIN
+    SET
+        state:on = true
+    WHERE
+        meta:name = "The Relay"
+END;
