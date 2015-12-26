@@ -11,7 +11,7 @@
 var iotdb = require("iotdb")
 
 exports.binding = {
-    model: require('./JohnnyFiveSensorUnit'),
+    model: require('./JohnnyFiveSensorUnit.json'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {
