@@ -14,15 +14,8 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('JohnnyFiveLED')
-    .description("control with Johnny-Five.LED")
-    .io(iotdb.boolean.on)
-    .io(iotdb.number.unit.brightness)
-    .io(iotdb.make_number(":effect.blink", "blink"))
-    .make();
-
 exports.binding = {
-    model: exports.Model,
+    model: require('./JohnnyFiveLED'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {

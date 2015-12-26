@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@base": "file:///johnny-five-led",
+    "@vocab": "file:///johnny-five-led#",
+    "iot": "https://iotdb.org/pub/iot#",
+    "schema": "http://schema.org/",
+    "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
+    "iot:purpose": {
+      "@id": "https://iotdb.org/pub/iot#purpose",
+      "@type": "@id"
+    },
+    "iot:type": {
+      "@id": "https://iotdb.org/pub/iot#type",
+      "@type": "@id"
+    },
+    "iot-unit": "https://iotdb.org/pub/iot-unit#",
+    "iot:unit": {
+      "@id": "https://iotdb.org/pub/iot#unit",
+      "@type": "@id"
+    }
+  },
+  "@id": "",
+  "@type": "iot:Model",
+  "schema:name": "johnny-five-led",
+  "schema:description": "control with Johnny-Five.LED",
+  "iot:attribute": [
+    {
+      "@type": "iot:Attribute",
+      "@id": "#on",
+      "schema:name": "on",
+      "iot:purpose": "iot-purpose:on",
+      "iot:type": "iot:type.boolean",
+      "iot:read": true,
+      "iot:write": true,
+      "iot:sensor": true,
+      "iot:actuator": true
+    },
+    {
+      "@type": "iot:Attribute",
+      "@id": "#brightness",
+      "schema:name": "brightness",
+      "iot:purpose": "iot-purpose:brightness",
+      "iot:type": "iot:type.number",
+      "iot:unit": "iot-unit:math.fraction.unit",
+      "iot:minimum": 0,
+      "iot:maximum": 1,
+      "iot:read": true,
+      "iot:write": true,
+      "iot:sensor": true,
+      "iot:actuator": true
+    },
+    {
+      "@type": "iot:Attribute",
+      "@id": "#blink",
+      "schema:name": "blink",
+      "iot:purpose": "iot-purpose:effect.blink",
+      "iot:type": "iot:type.number",
+      "iot:read": true,
+      "iot:write": true,
+      "iot:sensor": true,
+      "iot:actuator": true
+    }
+  ]
+}

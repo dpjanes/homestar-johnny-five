@@ -10,12 +10,8 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('JohnnyFiveSensorUnit')
-    .i("sensor", iotdb.sensor.unit)
-    .make();
-
 exports.binding = {
-    model: exports.Model,
+    model: require('./JohnnyFiveSensorUnit'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {

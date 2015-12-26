@@ -12,13 +12,8 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('JohnnyFiveOn')
-    .description("turn something on")
-    .io(iotdb.boolean.on)
-    .make();
-
 exports.binding = {
-    model: exports.Model,
+    model: require('./JohnnyFiveOn'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {

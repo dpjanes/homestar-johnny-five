@@ -12,13 +12,8 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('GroveRGBLCD')
-    .io(iotdb.string.color)
-    .io(iotdb.string.message.text)
-    .make();
-
 exports.binding = {
-    model: exports.Model,
+    model: require('./GroveRGBLCD'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {

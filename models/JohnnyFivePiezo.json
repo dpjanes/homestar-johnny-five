@@ -1,0 +1,62 @@
+{
+  "@context": {
+    "@base": "file:///johnny-five-piezo",
+    "@vocab": "file:///johnny-five-piezo#",
+    "iot": "https://iotdb.org/pub/iot#",
+    "schema": "http://schema.org/",
+    "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
+    "iot:purpose": {
+      "@id": "https://iotdb.org/pub/iot#purpose",
+      "@type": "@id"
+    },
+    "iot:type": {
+      "@id": "https://iotdb.org/pub/iot#type",
+      "@type": "@id"
+    },
+    "iot-unit": "https://iotdb.org/pub/iot-unit#",
+    "iot:unit": {
+      "@id": "https://iotdb.org/pub/iot#unit",
+      "@type": "@id"
+    }
+  },
+  "@id": "",
+  "@type": "iot:Model",
+  "schema:name": "johnny-five-piezo",
+  "iot:attribute": [
+    {
+      "@type": "iot:Attribute",
+      "@id": "#off",
+      "schema:name": "off",
+      "iot:purpose": "iot-purpose:on.false",
+      "iot:type": "iot:type.null",
+      "iot:read": false,
+      "iot:write": true,
+      "iot:sensor": false,
+      "iot:actuator": true
+    },
+    {
+      "@type": "iot:Attribute",
+      "@id": "#frequency",
+      "schema:name": "frequency",
+      "iot:purpose": "iot-purpose:frequency",
+      "iot:type": "iot:type.number",
+      "iot:unit": "iot-unit:math.si.hertz",
+      "iot:read": false,
+      "iot:write": true,
+      "iot:sensor": false,
+      "iot:actuator": true
+    },
+    {
+      "@type": "iot:Attribute",
+      "@id": "#duration",
+      "schema:name": "duration",
+      "iot:purpose": "iot-purpose:duration",
+      "iot:type": "iot:type.number",
+      "iot:unit": "iot-unit:math.si.second",
+      "iot:read": false,
+      "iot:write": true,
+      "iot:sensor": false,
+      "iot:actuator": true
+    }
+  ]
+}

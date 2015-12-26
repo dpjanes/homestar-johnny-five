@@ -1,0 +1,19 @@
+CREATE MODEL JohnnyFiveLed WITH
+    schema:name = "johnny-five-led",
+    schema:description = "control with Johnny-Five.LED"
+ATTRIBUTE on WITH
+    schema:name = "on",
+    iot:purpose = iot-purpose:on,
+    iot:type = iot:type.boolean
+ATTRIBUTE brightness WITH
+    schema:name = "brightness",
+    iot:purpose = iot-purpose:brightness,
+    iot:type = iot:type.number,
+    iot:unit = iot-unit:math.fraction.unit,
+    iot:minimum = 0,
+    iot:maximum = 1
+ATTRIBUTE blink WITH
+    schema:name = "blink",
+    iot:purpose = iot-purpose:effect.blink,
+    iot:type = iot:type.number
+;

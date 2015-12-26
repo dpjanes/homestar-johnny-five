@@ -1,0 +1,49 @@
+{
+  "@context": {
+    "@base": "file:///grove-rgblcd",
+    "@vocab": "file:///grove-rgblcd#",
+    "iot": "https://iotdb.org/pub/iot#",
+    "schema": "http://schema.org/",
+    "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
+    "iot:purpose": {
+      "@id": "https://iotdb.org/pub/iot#purpose",
+      "@type": "@id"
+    },
+    "iot:type": {
+      "@id": "https://iotdb.org/pub/iot#type",
+      "@type": "@id"
+    },
+    "iot:format": {
+      "@id": "https://iotdb.org/pub/iot#format",
+      "@type": "@id"
+    }
+  },
+  "@id": "",
+  "@type": "iot:Model",
+  "schema:name": "grove-rgblcd",
+  "iot:attribute": [
+    {
+      "@type": "iot:Attribute",
+      "@id": "#color",
+      "schema:name": "color",
+      "iot:purpose": "iot-purpose:color",
+      "iot:type": "iot:type.string",
+      "iot:format": "iot:format.color",
+      "iot:read": true,
+      "iot:write": true,
+      "iot:sensor": true,
+      "iot:actuator": true
+    },
+    {
+      "@type": "iot:Attribute",
+      "@id": "#text",
+      "schema:name": "text",
+      "iot:purpose": "iot-purpose:message.text",
+      "iot:type": "iot:type.string",
+      "iot:read": true,
+      "iot:write": true,
+      "iot:sensor": true,
+      "iot:actuator": true
+    }
+  ]
+}

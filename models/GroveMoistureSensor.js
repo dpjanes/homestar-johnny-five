@@ -10,13 +10,8 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('GroveMoistureSensor')
-    .facet(":sensor.water")
-    .i(iotdb.sensor.unit.water)
-    .make();
-
 exports.binding = {
-    model: exports.Model,
+    model: require('./GroveMoistureSensor'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {

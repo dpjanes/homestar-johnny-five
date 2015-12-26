@@ -1,0 +1,14 @@
+CREATE MODEL GroveMoistureSensor WITH
+    schema:name = "grove-moisture-sensor",
+    iot:facet = iot-facet:sensor,
+    iot:facet = iot-facet:sensor.water
+ATTRIBUTE water WITH
+    schema:name = "water",
+    iot:purpose = iot-purpose:sensor.water,
+    iot:type = iot:type.number,
+    iot:unit = iot-unit:math.fraction.unit,
+    iot:minimum = 0,
+    iot:maximum = 1,
+    iot:read = true,
+    iot:write = false
+;

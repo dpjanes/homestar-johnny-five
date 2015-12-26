@@ -12,13 +12,8 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('JohnnyFiveButton')
-    .description("control with Johnny-Five.Button")
-    .io(iotdb.boolean.on)
-    .make();
-
 exports.binding = {
-    model: exports.Model,
+    model: require('./JohnnyFiveButton'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {

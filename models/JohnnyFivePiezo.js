@@ -13,14 +13,8 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('JohnnyFivePiezo')
-    .action("off", { "iot:purpose": "iot-purpose:on.false" })
-    .o("frequency", iotdb.number.frequency.property("iot:clear-value", true))
-    .o("duration", iotdb.number.duration)
-    .make();
-
 exports.binding = {
-    model: exports.Model,
+    model: require('./JohnnyFivePiezo'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {

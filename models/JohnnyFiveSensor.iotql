@@ -1,0 +1,9 @@
+CREATE MODEL JohnnyFiveSensor WITH
+    schema:name = "johnny-five-sensor"
+ATTRIBUTE value WITH
+    schema:name = "sensor",
+    iot:purpose = iot-purpose:sensor,
+    iot:type = iot:type.number,
+    iot:read = true,
+    iot:write = false
+;

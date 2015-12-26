@@ -15,13 +15,8 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('GroveFlameSensor')
-    .facet(":sensor.fire")
-    .io(iotdb.sensor.boolean.fire)
-    .make();
-
 exports.binding = {
-    model: exports.Model,
+    model: require('./GroveFlameSensor'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {

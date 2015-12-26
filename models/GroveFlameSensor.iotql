@@ -1,0 +1,9 @@
+CREATE MODEL GroveFlameSensor WITH
+    schema:name = "grove-flame-sensor",
+    iot:facet = iot-facet:sensor,
+    iot:facet = iot-facet:sensor.fire
+ATTRIBUTE fire WITH
+    schema:name = "fire",
+    iot:purpose = iot-purpose:sensor.fire,
+    iot:type = iot:type.boolean
+;

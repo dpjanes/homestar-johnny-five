@@ -1,0 +1,23 @@
+CREATE MODEL JohnnyFivePiezo WITH
+    schema:name = "johnny-five-piezo"
+ATTRIBUTE off WITH
+    schema:name = "off",
+    iot:purpose = iot-purpose:on.false,
+    iot:type = iot:type.null,
+    iot:read = false,
+    iot:write = true
+ATTRIBUTE frequency WITH
+    schema:name = "frequency",
+    iot:purpose = iot-purpose:frequency,
+    iot:type = iot:type.number,
+    iot:unit = iot-unit:math.si.hertz,
+    iot:read = false,
+    iot:write = true
+ATTRIBUTE duration WITH
+    schema:name = "duration",
+    iot:purpose = iot-purpose:duration,
+    iot:type = iot:type.number,
+    iot:unit = iot-unit:math.si.second,
+    iot:read = false,
+    iot:write = true
+;

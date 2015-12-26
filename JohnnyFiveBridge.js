@@ -276,6 +276,8 @@ JohnnyFiveBridge.prototype.push = function (pushd, done) {
                 self.queue.finished(qitem);
             },
             coda: function() {
+                // otherwise we never no what the output values are
+                self.pulled(pushd);
                 done();
             },
         };

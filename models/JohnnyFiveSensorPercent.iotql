@@ -1,0 +1,12 @@
+CREATE MODEL JohnnyFiveSensorPercent WITH
+    schema:name = "johnny-five-sensor-percent"
+ATTRIBUTE value WITH
+    schema:name = "sensor",
+    iot:purpose = iot-purpose:sensor,
+    iot:type = iot:type.number,
+    iot:unit = iot-unit:math.fraction.percent,
+    iot:minimum = 0,
+    iot:maximum = 100,
+    iot:read = true,
+    iot:write = false
+;

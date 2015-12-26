@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "@base": "file:///grove-gas-mq2-sensor",
+    "@vocab": "file:///grove-gas-mq2-sensor#",
+    "iot": "https://iotdb.org/pub/iot#",
+    "schema": "http://schema.org/",
+    "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
+    "iot-facet": "https://iotdb.org/pub/iot-facet#",
+    "iot:facet": {
+      "@id": "https://iotdb.org/pub/iot#facet",
+      "@type": "@id"
+    },
+    "iot:purpose": {
+      "@id": "https://iotdb.org/pub/iot#purpose",
+      "@type": "@id"
+    },
+    "iot:type": {
+      "@id": "https://iotdb.org/pub/iot#type",
+      "@type": "@id"
+    },
+    "iot-unit": "https://iotdb.org/pub/iot-unit#",
+    "iot:unit": {
+      "@id": "https://iotdb.org/pub/iot#unit",
+      "@type": "@id"
+    }
+  },
+  "@id": "",
+  "@type": "iot:Model",
+  "schema:name": "grove-gas-mq2-sensor",
+  "iot:facet": [
+    "iot-facet:sensor",
+    "iot-facet:sensor.chemical"
+  ],
+  "iot:attribute": [
+    {
+      "@type": "iot:Attribute",
+      "@id": "#chemical",
+      "schema:name": "chemical",
+      "iot:purpose": "iot-purpose:sensor.chemical",
+      "iot:type": "iot:type.number",
+      "iot:unit": "iot-unit:math.fraction.unit",
+      "iot:minimum": 0,
+      "iot:maximum": 1,
+      "iot:read": true,
+      "iot:write": false,
+      "iot:sensor": true,
+      "iot:actuator": false
+    }
+  ]
+}

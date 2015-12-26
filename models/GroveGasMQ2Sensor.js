@@ -10,13 +10,8 @@
 
 var iotdb = require("iotdb")
 
-exports.Model = iotdb.make_model('GroveGasMQ2Sensor')
-    .facet(":sensor.chemical")
-    .i(iotdb.sensor.unit.chemical)
-    .make();
-
 exports.binding = {
-    model: exports.Model,
+    model: require('./GroveGasMQ2Sensor'),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {
