@@ -1,30 +1,40 @@
 # homestar-johnny-five
 
-IOTDB / HomeStar Controller for Arduino / JohnnyFive devices
+IOTDB / Home☆Star Module for [Arduino / JohnnyFive](http://johnny-five.io/) devices.
 
-<img src="https://github.com/dpjanes/iotdb-homestar/blob/master/docs/HomeStar.png" align="right" />
+<img src="https://raw.githubusercontent.com/dpjanes/iotdb-homestar/master/docs/HomeStar.png" align="right" />
 
 # Installation
 
-Install Home☆Star first. 
-See: https://github.com/dpjanes/iotdb-homestar#installation
+[Install Home☆Star first](https://homestar.io/about/install).
 
-Then
+Then:
 
     $ homestar install homestar-johnny-five
 
-# Quick Start
 
-XXX
+# Testing
+## IOTDB
 
-	$ npm install -g homestar ## with 'sudo' if error
-	$ homestar setup
-	$ homestar install homestar-johnny-five
-	$ node
-	>>> iotdb = require('iotdb')
-	>>> iot = iotdb.iot()
-	>>> things = iot.connect("WeMoSocket")
-	>>> things.set(":on", false)
+Blink an LED every two seconds
+
+    var things = iot.connect('JohnnyFiveLED', {
+        pin: 2
+    });
+    
+    var count = 0;
+    setInterval(function() {
+        things.set(':on', count++ % 2)
+    }, 1000);
+
+
+## IoTQL
+
+Turn on an LED
+
+	CONNECT MODEL JohnnyFiveLED WITH pin = 2, meta:tag = "LED";
+	SET state:on = true WHERE meta:tag = "LED";
+	
 
 # Technical
 ## How does it interface with Johnny-Five
@@ -38,7 +48,7 @@ of the model.js files.
 We'll use this as a reference
 
     exports.binding = {
-        model: exports.Model,
+        model: require('./Something.json'),
         bridge: require('../JohnnyFiveBridge').Bridge,
         discover: false,
         initd: {
