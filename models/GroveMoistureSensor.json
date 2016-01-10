@@ -14,6 +14,10 @@
       "@id": "https://iotdb.org/pub/iot#purpose",
       "@type": "@id"
     },
+    "iot:what": {
+      "@id": "https://iotdb.org/pub/iot#what",
+      "@type": "@id"
+    },
     "iot:type": {
       "@id": "https://iotdb.org/pub/iot#type",
       "@type": "@id"
@@ -36,14 +40,15 @@
       "@type": "iot:Attribute",
       "@id": "#water",
       "schema:name": "water",
-      "iot:purpose": "iot-purpose:sensor.water",
+      "iot:purpose": "iot-purpose:sensor",
+      "iot:what": "iot-purpose:what.moisture",
       "iot:type": "iot:type.number",
       "iot:unit": "iot-unit:math.fraction.unit",
       "iot:minimum": 0,
       "iot:maximum": 1,
+      "iot:sensor": true,
       "iot:read": true,
       "iot:write": false,
-      "iot:sensor": true,
       "iot:actuator": false
     }
   ]

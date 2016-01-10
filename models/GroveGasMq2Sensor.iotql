@@ -4,11 +4,19 @@ CREATE MODEL GroveGasMq2Sensor WITH
     iot:facet = iot-facet:sensor.chemical
 ATTRIBUTE chemical WITH
     schema:name = "chemical",
-    iot:purpose = iot-purpose:sensor.chemical,
+    iot:purpose = iot-purpose:chemical,
+    iot:what = iot-purpose:chemical.CO,
+    iot:what = iot-purpose:chemical.C2H5OH,
+    iot:what = iot-purpose:chemical.CH4,
+    iot:what = iot-purpose:chemical.C3H8,
+    iot:what = iot-purpose:chemical.H2,
+    iot:what = iot-purpose:what.lpg,
+    iot:what = iot-purpose:what.smoke,
     iot:type = iot:type.number,
     iot:unit = iot-unit:math.fraction.unit,
     iot:minimum = 0,
     iot:maximum = 1,
+    iot:sensor = true,
     iot:read = true,
     iot:write = false
 ;

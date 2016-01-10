@@ -14,6 +14,10 @@
       "@id": "https://iotdb.org/pub/iot#purpose",
       "@type": "@id"
     },
+    "iot:what": {
+      "@id": "https://iotdb.org/pub/iot#what",
+      "@type": "@id"
+    },
     "iot:type": {
       "@id": "https://iotdb.org/pub/iot#type",
       "@type": "@id"
@@ -36,14 +40,23 @@
       "@type": "iot:Attribute",
       "@id": "#chemical",
       "schema:name": "chemical",
-      "iot:purpose": "iot-purpose:sensor.chemical",
+      "iot:purpose": "iot-purpose:chemical",
+      "iot:what": [
+        "iot-purpose:chemical.CO",
+        "iot-purpose:chemical.C2H5OH",
+        "iot-purpose:chemical.CH4",
+        "iot-purpose:chemical.C3H8",
+        "iot-purpose:chemical.H2",
+        "iot-purpose:what.lpg",
+        "iot-purpose:what.smoke"
+      ],
       "iot:type": "iot:type.number",
       "iot:unit": "iot-unit:math.fraction.unit",
       "iot:minimum": 0,
       "iot:maximum": 1,
+      "iot:sensor": true,
       "iot:read": true,
       "iot:write": false,
-      "iot:sensor": true,
       "iot:actuator": false
     }
   ]
