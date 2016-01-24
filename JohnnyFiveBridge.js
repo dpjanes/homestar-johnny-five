@@ -24,7 +24,6 @@
 
 var iotdb = require('iotdb');
 var _ = iotdb._;
-var bunyan = iotdb.bunyan;
 
 var five = require('johnny-five');
 
@@ -33,7 +32,7 @@ try {
 } catch (x) {
 };
 
-var logger = bunyan.createLogger({
+var logger = iotdb.logger({
     name: 'homestar-johnny-five',
     module: 'JohnnyFiveBridge',
 });
