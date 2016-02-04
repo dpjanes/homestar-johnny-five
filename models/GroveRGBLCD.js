@@ -23,7 +23,7 @@ exports.binding = {
     connectd: {
         data_out: function (paramd) {
             if (paramd.cookd.color !== undefined) {
-                var color = new iotdb._.Color(paramd.cookd.color);
+                var color = new iotdb._.color.Color(paramd.cookd.color);
                 paramd.rawd.LCD.push([ "bgColor", color.r * 0xFF, color.g * 0xFF, color.b * 0xFF, ]);
             }
             if (paramd.cookd.text !== undefined) {

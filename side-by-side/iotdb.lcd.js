@@ -14,7 +14,7 @@ var pot = iotdb.connect("JohnnyFiveSensorUnit", {
     pin: "A0",
 });
 var lcd = iotdb.connect("GroveRGBLCD");
-var color = new iotdb._.Color();
+var color = new iotdb._.color.Color();
 
 pot.on(":sensor", function(thing, attribute, value) {
     var hex = color.set_hsl(value, 1, 0.5).get_hex();
