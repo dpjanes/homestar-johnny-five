@@ -5,35 +5,28 @@
 
 # Installation
 
-[Install Home☆Star first](https://homestar.io/about/install).
+* [Read this first](https://github.com/dpjanes/node-iotdb/blob/master/docs/install.md)
 
 Then:
 
-    $ homestar install homestar-johnny-five
+    $ npm install homestar-johnny-five
 
-
-# Testing
-## IOTDB
+# Use
 
 Blink an LED every two seconds
+    
+    const iotdb = require("iotdb")
+    iotdb.use("homestar-johnny-five")
 
-    var things = iot.connect('JohnnyFiveLED', {
+    const things = iot.connect('JohnnyFiveLED', {
         pin: 2
     });
     
-    var count = 0;
+    let count = 0;
     setInterval(function() {
         things.set(':on', count++ % 2)
     }, 1000);
 
-
-## IoTQL
-
-Turn on an LED
-
-	CONNECT MODEL JohnnyFiveLED WITH pin = 2, meta:tag = "LED";
-	SET state:on = true WHERE meta:tag = "LED";
-	
 
 # Technical
 ## How does it interface with Johnny-Five
