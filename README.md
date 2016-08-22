@@ -1,6 +1,5 @@
 # homestar-johnny-five
-
-IOTDB / Home☆Star Module for [Arduino / JohnnyFive](http://johnny-five.io/) devices.
+[IOTDB](https://github.com/dpjanes/node-iotdb) Bridge for [Arduino / JohnnyFive](http://johnny-five.io/) devices.
 
 <img src="https://raw.githubusercontent.com/dpjanes/iotdb-homestar/master/docs/HomeStar.png" align="right" />
 
