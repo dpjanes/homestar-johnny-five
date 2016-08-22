@@ -60,8 +60,3 @@ exports.bindings = [
     require('models/JohnnyFiveThreeAxisCompass'),
     */
 ];
-
-exports.iotdb = require("iotdb");
-exports.wrap = function(name, initd) {
-    return exports.iotdb.make_wrap(name, exports.bindings, initd);
-};
