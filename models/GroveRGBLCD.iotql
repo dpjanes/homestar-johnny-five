@@ -1,4 +1,4 @@
-CREATE MODEL GroveRgblcd WITH
+CREATE MODEL GroveRGBLCD WITH
     schema:name = "grove-rgblcd"
 ATTRIBUTE color WITH
     schema:name = "color",
