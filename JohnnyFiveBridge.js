@@ -22,17 +22,17 @@
 
 "use strict";
 
-var iotdb = require('iotdb');
-var _ = iotdb._;
+const iotdb = require('iotdb');
+const _ = iotdb._;
 
-var five = require('johnny-five');
+const five = require('johnny-five');
 
 try {
     var io_edison = require("galileo-io");
 } catch (x) {
 };
 
-var logger = iotdb.logger({
+const logger = iotdb.logger({
     name: 'homestar-johnny-five',
     module: 'JohnnyFiveBridge',
 });
@@ -43,8 +43,8 @@ var logger = iotdb.logger({
  *  @param {object|undefined} native
  *  only used for instances, should be 
  */
-var JohnnyFiveBridge = function (initd, native) {
-    var self = this;
+const JohnnyFiveBridge = function (initd, native) {
+    const self = this;
 
     self.initd = _.defaults(initd,
         iotdb.keystore().get("bridges/JohnnyFiveBridge/initd"), {
@@ -80,7 +80,7 @@ JohnnyFiveBridge.prototype.name = function () {
  *  See {iotdb.bridge.Bridge#discover} for documentation.
  */
 JohnnyFiveBridge.prototype.discover = function () {
-    var self = this;
+    const self = this;
 
     logger.info({
         method: "discover"
@@ -101,7 +101,7 @@ JohnnyFiveBridge.prototype.discover = function () {
  *  See {iotdb.bridge.Bridge#connect} for documentation.
  */
 JohnnyFiveBridge.prototype.connect = function (connectd) {
-    var self = this;
+    const self = this;
     if (!self.native) {
         return;
     }
@@ -120,7 +120,7 @@ JohnnyFiveBridge.prototype.connect = function (connectd) {
 };
 
 JohnnyFiveBridge.prototype._setup_connections = function () {
-    var self = this;
+    const self = this;
 
     self.component_names.map(function(component_name) {
         var component_constructor = five[component_name];
@@ -177,7 +177,7 @@ JohnnyFiveBridge.prototype._setup_connections = function () {
 };
 
 JohnnyFiveBridge.prototype._setup_polling = function () {
-    var self = this;
+    const self = this;
     if (!self.initd.poll) {
         return;
     }
@@ -193,7 +193,7 @@ JohnnyFiveBridge.prototype._setup_polling = function () {
 };
 
 JohnnyFiveBridge.prototype._forget = function () {
-    var self = this;
+    const self = this;
     if (!self.native) {
         return;
     }
@@ -210,7 +210,7 @@ JohnnyFiveBridge.prototype._forget = function () {
  *  See {iotdb.bridge.Bridge#disconnect} for documentation.
  */
 JohnnyFiveBridge.prototype.disconnect = function () {
-    var self = this;
+    const self = this;
     if (!self.native || !self.native) {
         return;
     }
@@ -224,7 +224,7 @@ JohnnyFiveBridge.prototype.disconnect = function () {
  *  See {iotdb.bridge.Bridge#push} for documentation.
  */
 JohnnyFiveBridge.prototype.push = function (pushd, done) {
-    var self = this;
+    const self = this;
     if (!self.native) {
         done(new Error("not connected"));
         return;
@@ -288,7 +288,7 @@ JohnnyFiveBridge.prototype.push = function (pushd, done) {
  *  See {iotdb.bridge.Bridge#pull} for documentation.
  */
 JohnnyFiveBridge.prototype.pull = function () {
-    var self = this;
+    const self = this;
     if (!self.native) {
         return;
     }
@@ -301,7 +301,7 @@ JohnnyFiveBridge.prototype.pull = function () {
  *  See {iotdb.bridge.Bridge#meta} for documentation.
  */
 JohnnyFiveBridge.prototype.meta = function () {
-    var self = this;
+    const self = this;
     if (!self.native) {
         return;
     }
@@ -330,14 +330,14 @@ JohnnyFiveBridge.prototype.reachable = function () {
 JohnnyFiveBridge.prototype.configure = function (app) {};
 
 /* -- internals -- */
-var __singleton;
-var __pendings;
+let __singleton;
+let __pendings;
 
 /**
  *  If you need a singleton to access the library
  */
 JohnnyFiveBridge.prototype._firmata = function (done) {
-    var self = this;
+    const self = this;
 
     if (__singleton) {
         done(null, __singleton);
