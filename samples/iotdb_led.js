@@ -6,10 +6,10 @@
 
 "use strict";
 
-var iotdb = require('iotdb');
-var iot = iotdb.iot();
+const iotdb = require('iotdb');
+iotdb.use("homestar-johnny-five");
 
-var things = iot.connect('JohnnyFiveLED', {
+const things = iotdb.connect('JohnnyFiveLED', {
     pin: 6
 });
 things.on("istate", function(thing) {
@@ -22,9 +22,7 @@ things.on("thing", function(thing) {
     console.log("+", "discovered", thing.thing_id(), "\n ", thing.state("meta"));
 });
 
-
-
-var count = 0;
+let count = 0;
 setInterval(function() {
     things.set(':on', count++ % 2)
 }, 1000); 

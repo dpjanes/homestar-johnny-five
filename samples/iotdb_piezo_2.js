@@ -6,10 +6,10 @@
 
 "use strict";
 
-var iotdb = require('iotdb');
-var iot = iotdb.iot();
+const iotdb = require('iotdb');
+iotdb.use("homestar-johnny-five");
 
-var things = iot.connect('JohnnyFivePiezo', {
+const things = iotdb.connect('JohnnyFivePiezo', {
     pin: 3
 });
 things.on("istate", function(thing) {
