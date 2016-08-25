@@ -1,9 +1,8 @@
 {
   "@context": {
-    "@base": "file:///johnny-five-on",
-    "@vocab": "file:///johnny-five-on#",
+    "@base": "file:///johnny-five-sensor",
+    "@vocab": "file:///johnny-five-sensor#",
     "iot": "https://iotdb.org/pub/iot#",
-    "schema": "http://schema.org/",
     "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
     "iot:purpose": {
       "@id": "https://iotdb.org/pub/iot#purpose",
@@ -12,23 +11,24 @@
     "iot:type": {
       "@id": "https://iotdb.org/pub/iot#type",
       "@type": "@id"
-    }
+    },
+    "schema": "http://schema.org/"
   },
   "@id": "",
   "@type": "iot:Model",
-  "schema:name": "johnny-five-on",
-  "schema:description": "turn something on",
   "iot:attribute": [
     {
+      "@id": "#value",
       "@type": "iot:Attribute",
-      "@id": "#on",
-      "schema:name": "on",
-      "iot:purpose": "iot-purpose:on",
-      "iot:type": "iot:type.boolean",
+      "iot:actuator": true,
+      "iot:purpose": "iot-purpose:sensor",
       "iot:read": true,
-      "iot:write": true,
       "iot:sensor": true,
-      "iot:actuator": true
+      "iot:type": "iot:type.number",
+      "iot:write": false,
+      "schema:name": "sensor"
     }
-  ]
+  ],
+  "iot:model-id": "johnny-five-sensor",
+  "schema:name": "johnny-five-sensor"
 }

@@ -1,9 +1,8 @@
 {
   "@context": {
-    "@base": "file:///johnny-five-sensor",
-    "@vocab": "file:///johnny-five-sensor#",
+    "@base": "file:///grove-relay",
+    "@vocab": "file:///grove-relay#",
     "iot": "https://iotdb.org/pub/iot#",
-    "schema": "http://schema.org/",
     "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
     "iot:purpose": {
       "@id": "https://iotdb.org/pub/iot#purpose",
@@ -12,22 +11,24 @@
     "iot:type": {
       "@id": "https://iotdb.org/pub/iot#type",
       "@type": "@id"
-    }
+    },
+    "schema": "http://schema.org/"
   },
   "@id": "",
   "@type": "iot:Model",
-  "schema:name": "johnny-five-sensor",
   "iot:attribute": [
     {
+      "@id": "#on",
       "@type": "iot:Attribute",
-      "@id": "#value",
-      "schema:name": "sensor",
-      "iot:purpose": "iot-purpose:sensor",
-      "iot:type": "iot:type.number",
+      "iot:actuator": true,
+      "iot:purpose": "iot-purpose:on",
       "iot:read": true,
-      "iot:write": false,
       "iot:sensor": true,
-      "iot:actuator": false
+      "iot:type": "iot:type.boolean",
+      "iot:write": true,
+      "schema:name": "on"
     }
-  ]
+  ],
+  "iot:model-id": "grove-relay",
+  "schema:name": "grove-relay"
 }

@@ -3,19 +3,9 @@
     "@base": "file:///grove-moisture-sensor",
     "@vocab": "file:///grove-moisture-sensor#",
     "iot": "https://iotdb.org/pub/iot#",
-    "schema": "http://schema.org/",
     "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
-    "iot-facet": "https://iotdb.org/pub/iot-facet#",
-    "iot:facet": {
-      "@id": "https://iotdb.org/pub/iot#facet",
-      "@type": "@id"
-    },
     "iot:purpose": {
       "@id": "https://iotdb.org/pub/iot#purpose",
-      "@type": "@id"
-    },
-    "iot:what": {
-      "@id": "https://iotdb.org/pub/iot#what",
       "@type": "@id"
     },
     "iot:type": {
@@ -26,30 +16,41 @@
     "iot:unit": {
       "@id": "https://iotdb.org/pub/iot#unit",
       "@type": "@id"
+    },
+    "iot:what": {
+      "@id": "https://iotdb.org/pub/iot#what",
+      "@type": "@id"
+    },
+    "schema": "http://schema.org/",
+    "iot-facet": "https://iotdb.org/pub/iot-facet#",
+    "iot:facet": {
+      "@id": "https://iotdb.org/pub/iot#facet",
+      "@type": "@id"
     }
   },
   "@id": "",
   "@type": "iot:Model",
-  "schema:name": "grove-moisture-sensor",
+  "iot:attribute": [
+    {
+      "@id": "#water",
+      "@type": "iot:Attribute",
+      "iot:actuator": true,
+      "iot:maximum": 1,
+      "iot:minimum": 0,
+      "iot:purpose": "iot-purpose:sensor",
+      "iot:read": true,
+      "iot:sensor": true,
+      "iot:type": "iot:type.number",
+      "iot:unit": "iot-unit:math.fraction.unit",
+      "iot:what": "iot-purpose:what.moisture",
+      "iot:write": false,
+      "schema:name": "water"
+    }
+  ],
   "iot:facet": [
     "iot-facet:sensor",
     "iot-facet:sensor.water"
   ],
-  "iot:attribute": [
-    {
-      "@type": "iot:Attribute",
-      "@id": "#water",
-      "schema:name": "water",
-      "iot:purpose": "iot-purpose:sensor",
-      "iot:what": "iot-purpose:what.moisture",
-      "iot:type": "iot:type.number",
-      "iot:unit": "iot-unit:math.fraction.unit",
-      "iot:minimum": 0,
-      "iot:maximum": 1,
-      "iot:sensor": true,
-      "iot:read": true,
-      "iot:write": false,
-      "iot:actuator": false
-    }
-  ]
+  "iot:model-id": "grove-moisture-sensor",
+  "schema:name": "grove-moisture-sensor"
 }

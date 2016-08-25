@@ -3,19 +3,9 @@
     "@base": "file:///grove-gas-mq2-sensor",
     "@vocab": "file:///grove-gas-mq2-sensor#",
     "iot": "https://iotdb.org/pub/iot#",
-    "schema": "http://schema.org/",
     "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
-    "iot-facet": "https://iotdb.org/pub/iot-facet#",
-    "iot:facet": {
-      "@id": "https://iotdb.org/pub/iot#facet",
-      "@type": "@id"
-    },
     "iot:purpose": {
       "@id": "https://iotdb.org/pub/iot#purpose",
-      "@type": "@id"
-    },
-    "iot:what": {
-      "@id": "https://iotdb.org/pub/iot#what",
       "@type": "@id"
     },
     "iot:type": {
@@ -26,21 +16,32 @@
     "iot:unit": {
       "@id": "https://iotdb.org/pub/iot#unit",
       "@type": "@id"
+    },
+    "iot:what": {
+      "@id": "https://iotdb.org/pub/iot#what",
+      "@type": "@id"
+    },
+    "schema": "http://schema.org/",
+    "iot-facet": "https://iotdb.org/pub/iot-facet#",
+    "iot:facet": {
+      "@id": "https://iotdb.org/pub/iot#facet",
+      "@type": "@id"
     }
   },
   "@id": "",
   "@type": "iot:Model",
-  "schema:name": "grove-gas-mq2-sensor",
-  "iot:facet": [
-    "iot-facet:sensor",
-    "iot-facet:sensor.chemical"
-  ],
   "iot:attribute": [
     {
-      "@type": "iot:Attribute",
       "@id": "#chemical",
-      "schema:name": "chemical",
+      "@type": "iot:Attribute",
+      "iot:actuator": true,
+      "iot:maximum": 1,
+      "iot:minimum": 0,
       "iot:purpose": "iot-purpose:chemical",
+      "iot:read": true,
+      "iot:sensor": true,
+      "iot:type": "iot:type.number",
+      "iot:unit": "iot-unit:math.fraction.unit",
       "iot:what": [
         "iot-purpose:chemical.CO",
         "iot-purpose:chemical.C2H5OH",
@@ -50,14 +51,14 @@
         "iot-purpose:what.lpg",
         "iot-purpose:what.smoke"
       ],
-      "iot:type": "iot:type.number",
-      "iot:unit": "iot-unit:math.fraction.unit",
-      "iot:minimum": 0,
-      "iot:maximum": 1,
-      "iot:sensor": true,
-      "iot:read": true,
       "iot:write": false,
-      "iot:actuator": false
+      "schema:name": "chemical"
     }
-  ]
+  ],
+  "iot:facet": [
+    "iot-facet:sensor",
+    "iot-facet:sensor.chemical"
+  ],
+  "iot:model-id": "grove-gas-mq2-sensor",
+  "schema:name": "grove-gas-mq2-sensor"
 }

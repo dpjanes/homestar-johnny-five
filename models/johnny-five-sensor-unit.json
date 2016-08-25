@@ -3,7 +3,6 @@
     "@base": "file:///johnny-five-sensor-unit",
     "@vocab": "file:///johnny-five-sensor-unit#",
     "iot": "https://iotdb.org/pub/iot#",
-    "schema": "http://schema.org/",
     "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
     "iot:purpose": {
       "@id": "https://iotdb.org/pub/iot#purpose",
@@ -17,25 +16,27 @@
     "iot:unit": {
       "@id": "https://iotdb.org/pub/iot#unit",
       "@type": "@id"
-    }
+    },
+    "schema": "http://schema.org/"
   },
   "@id": "",
   "@type": "iot:Model",
-  "schema:name": "johnny-five-sensor-unit",
   "iot:attribute": [
     {
-      "@type": "iot:Attribute",
       "@id": "#sensor",
-      "schema:name": "sensor",
+      "@type": "iot:Attribute",
+      "iot:actuator": true,
+      "iot:maximum": 1,
+      "iot:minimum": 0,
       "iot:purpose": "iot-purpose:sensor",
+      "iot:read": true,
+      "iot:sensor": true,
       "iot:type": "iot:type.number",
       "iot:unit": "iot-unit:math.fraction.unit",
-      "iot:minimum": 0,
-      "iot:maximum": 1,
-      "iot:read": true,
       "iot:write": false,
-      "iot:sensor": true,
-      "iot:actuator": false
+      "schema:name": "sensor"
     }
-  ]
+  ],
+  "iot:model-id": "johnny-five-sensor-unit",
+  "schema:name": "johnny-five-sensor-unit"
 }

@@ -3,7 +3,6 @@
     "@base": "file:///johnny-five-piezo",
     "@vocab": "file:///johnny-five-piezo#",
     "iot": "https://iotdb.org/pub/iot#",
-    "schema": "http://schema.org/",
     "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
     "iot:purpose": {
       "@id": "https://iotdb.org/pub/iot#purpose",
@@ -13,6 +12,7 @@
       "@id": "https://iotdb.org/pub/iot#type",
       "@type": "@id"
     },
+    "schema": "http://schema.org/",
     "iot-unit": "https://iotdb.org/pub/iot-unit#",
     "iot:unit": {
       "@id": "https://iotdb.org/pub/iot#unit",
@@ -21,43 +21,44 @@
   },
   "@id": "",
   "@type": "iot:Model",
-  "schema:name": "johnny-five-piezo",
   "iot:attribute": [
     {
-      "@type": "iot:Attribute",
       "@id": "#off",
-      "schema:name": "off",
-      "iot:purpose": "iot-purpose:on.false",
-      "iot:type": "iot:type.string",
+      "@type": "iot:Attribute",
+      "iot:actuator": true,
       "iot:instantaneous": true,
+      "iot:purpose": "iot-purpose:on.false",
       "iot:read": false,
+      "iot:sensor": true,
+      "iot:type": "iot:type.string",
       "iot:write": true,
-      "iot:sensor": false,
-      "iot:actuator": true
+      "schema:name": "off"
     },
     {
-      "@type": "iot:Attribute",
       "@id": "#frequency",
-      "schema:name": "frequency",
+      "@type": "iot:Attribute",
+      "iot:actuator": true,
       "iot:purpose": "iot-purpose:frequency",
+      "iot:read": false,
+      "iot:sensor": true,
       "iot:type": "iot:type.number",
       "iot:unit": "iot-unit:math.si.hertz",
-      "iot:read": false,
       "iot:write": true,
-      "iot:sensor": false,
-      "iot:actuator": true
+      "schema:name": "frequency"
     },
     {
-      "@type": "iot:Attribute",
       "@id": "#duration",
-      "schema:name": "duration",
+      "@type": "iot:Attribute",
+      "iot:actuator": true,
       "iot:purpose": "iot-purpose:duration",
+      "iot:read": false,
+      "iot:sensor": true,
       "iot:type": "iot:type.number",
       "iot:unit": "iot-unit:math.si.second",
-      "iot:read": false,
       "iot:write": true,
-      "iot:sensor": false,
-      "iot:actuator": true
+      "schema:name": "duration"
     }
-  ]
+  ],
+  "iot:model-id": "johnny-five-piezo",
+  "schema:name": "johnny-five-piezo"
 }
