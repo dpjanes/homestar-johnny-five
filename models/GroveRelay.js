@@ -13,7 +13,7 @@
 var iotdb = require("iotdb")
 
 exports.binding = {
-    model: require('./GroveRelay.json'),
+	model: require("./grove-relay.json"),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {

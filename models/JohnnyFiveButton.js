@@ -13,7 +13,7 @@
 var iotdb = require("iotdb")
 
 exports.binding = {
-    model: require('./JohnnyFiveButton.json'),
+	model: require("./johnny-five-button.json"),
     bridge: require('../JohnnyFiveBridge').Bridge,
     discover: false,
     initd: {
