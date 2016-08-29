@@ -60,3 +60,5 @@ exports.bindings = [
     require('models/JohnnyFiveThreeAxisCompass'),
     */
 ];
+
+exports.module_folder = __dirname;
