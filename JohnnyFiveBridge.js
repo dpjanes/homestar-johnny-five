@@ -70,10 +70,6 @@ const JohnnyFiveBridge = function (initd, native) {
 
 JohnnyFiveBridge.prototype = new iotdb.Bridge();
 
-JohnnyFiveBridge.prototype.name = function () {
-    return "JohnnyFiveBridge";
-};
-
 /* --- lifecycle --- */
 
 /**
